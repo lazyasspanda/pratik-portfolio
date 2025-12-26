@@ -153,6 +153,15 @@ button {
   color: var(--color-text-muted);
 }
 
+/* Hide dialog when modal is hidden */
+.modal[hidden] .modal-dialog {
+  display: none;
+}
+
+/* Optional: ensure dialog shows when modal is open */
+.modal:not([hidden]) .modal-dialog {
+  display: block;
+}
 /* ==============================
    ACCESSIBILITY UTILITIES
    ============================== */
