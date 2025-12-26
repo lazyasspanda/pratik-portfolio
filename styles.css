@@ -855,11 +855,13 @@ html[data-theme="light"] .card-glass {
   backdrop-filter: blur(12px);
   z-index: 50;
   opacity: 0;
-  transition: opacity var(--transition-med);
+  transition: opacity var(--transition-med), visibility var(--transition-med);
+  visibility: hidden;
 }
 
 .modal-backdrop.is-visible {
   opacity: 1;
+  visibility: visible;
 }
 
 .modal {
@@ -871,6 +873,10 @@ html[data-theme="light"] .card-glass {
   padding: 5rem 1.5rem 2rem;
   z-index: 60;
   overflow-y: auto;
+}
+
+.modal[hidden] {
+  display: none;
 }
 
 .modal-dialog {
