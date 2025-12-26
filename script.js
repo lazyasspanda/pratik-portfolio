@@ -184,6 +184,7 @@ function closeModal() {
 
   activeModal.hidden = true;
   backdrop.classList.remove("is-visible");
+  // Ensure it’s hidden for screen readers / pointer
   backdrop.hidden = true;
 
   document.removeEventListener("keydown", handleKeydown);
