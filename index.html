@@ -3,408 +3,710 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRESTIGE MOTORS — Luxury Automotive</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>APEX MOTORS — World-Class Automotive Dealership</title>
+    <meta name="description" content="APEX MOTORS - Premium luxury and performance vehicles. BMW, Mercedes, Porsche, Audi and more.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Grain Overlay -->
-<div class="grain" aria-hidden="true"></div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- Custom Cursor -->
-<div class="cursor" id="cursor">
-    <div class="cursor__dot"></div>
-    <div class="cursor__ring"></div>
-</div>
-
-<!-- Preloader -->
-<div class="preloader" id="preloader">
-    <div class="preloader__counter" id="preloaderCounter">0</div>
-    <div class="preloader__bar"><div class="preloader__progress" id="preloaderProgress"></div></div>
-    <div class="preloader__brand">PRESTIGE MOTORS</div>
-</div>
-
-<!-- Three.js Canvas -->
-<canvas class="webgl" id="webglCanvas"></canvas>
-
-<!-- Navigation -->
-<nav class="nav" id="nav">
-    <a href="#" class="nav__logo magnetic">PM</a>
-    <div class="nav__links">
-        <a href="#about" class="nav__link magnetic">About</a>
-        <a href="#models" class="nav__link magnetic">Models</a>
-        <a href="#showcase" class="nav__link magnetic">Showcase</a>
-        <a href="#testimonials" class="nav__link magnetic">Reviews</a>
-        <a href="#faq" class="nav__link magnetic">FAQ</a>
-    </div>
-    <a href="#cta" class="nav__cta magnetic">Book Visit</a>
-</nav>
-
-<!-- Hero -->
-<section class="hero" id="hero">
-    <div class="hero__content">
-        <p class="hero__eyebrow" data-animate="fade-up">EST. 1987 — BEVERLY HILLS</p>
-        <h1 class="hero__title" data-split="chars">PRESTIGE MOTORS</h1>
-        <p class="hero__sub" data-animate="fade-up">Curating the world's most extraordinary automobiles for those who refuse to settle.</p>
-        <div class="hero__ctas" data-animate="fade-up">
-            <a href="#models" class="btn btn--gold magnetic">Explore Collection</a>
-            <a href="#cta" class="btn btn--outline magnetic">Schedule Visit</a>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader__gauge">
+            <div class="loader__gauge-bg"></div>
+            <div class="loader__needle" id="loaderNeedle"></div>
+            <div class="loader__gauge-center"></div>
+            <span class="loader__text">APEX</span>
         </div>
+        <div class="loader__top" id="loaderTop"></div>
+        <div class="loader__bottom" id="loaderBottom"></div>
     </div>
-    <div class="hero__scroll">
-        <span>Scroll</span>
-        <div class="hero__scroll-line"></div>
-    </div>
-</section>
 
-
-<!-- Marquee -->
-<section class="marquee">
-    <div class="marquee__track">
-        <div class="marquee__content">
-            <span>BMW</span><span class="marquee__sep">◆</span>
-            <span>MERCEDES-BENZ</span><span class="marquee__sep">◆</span>
-            <span>PORSCHE</span><span class="marquee__sep">◆</span>
-            <span>AUDI</span><span class="marquee__sep">◆</span>
-            <span>RANGE ROVER</span><span class="marquee__sep">◆</span>
-            <span>BENTLEY</span><span class="marquee__sep">◆</span>
-            <span>MASERATI</span><span class="marquee__sep">◆</span>
-            <span>LAMBORGHINI</span><span class="marquee__sep">◆</span>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#" class="nav__logo">APEX<span class="gold">.</span></a>
+            <ul class="nav__links">
+                <li><a href="#featured">Vehicles</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#listings">Inventory</a></li>
+                <li><a href="#trade-in">Trade-In</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="nav__actions">
+                <button class="nav__contact-btn" id="contactToggle">Contact</button>
+                <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
-        <div class="marquee__content" aria-hidden="true">
-            <span>BMW</span><span class="marquee__sep">◆</span>
-            <span>MERCEDES-BENZ</span><span class="marquee__sep">◆</span>
-            <span>PORSCHE</span><span class="marquee__sep">◆</span>
-            <span>AUDI</span><span class="marquee__sep">◆</span>
-            <span>RANGE ROVER</span><span class="marquee__sep">◆</span>
-            <span>BENTLEY</span><span class="marquee__sep">◆</span>
-            <span>MASERATI</span><span class="marquee__sep">◆</span>
-            <span>LAMBORGHINI</span><span class="marquee__sep">◆</span>
-        </div>
-    </div>
-</section>
-
-<!-- About -->
-<section class="about" id="about">
-    <div class="about__grid">
-        <div class="about__media" data-animate="clip-reveal">
-            <img src="https://images.unsplash.com/photo-1567818735868-e71b99932e29?w=900&q=80" alt="Prestige Motors Showroom">
-        </div>
-        <div class="about__content">
-            <span class="tag" data-animate="fade-up">Our Legacy</span>
-            <h2 class="section-title" data-split="words">A Legacy of Excellence Since 1987</h2>
-            <p class="about__text" data-animate="fade-up">For over three decades, Prestige Motors has been the trusted destination for automotive enthusiasts seeking the extraordinary. Our curated collection represents the finest in engineering, design, and performance.</p>
-            <div class="about__stats">
-                <div class="stat" data-animate="fade-up">
-                    <span class="stat__num" data-count="500">0</span><span class="stat__suffix">+</span>
-                    <span class="stat__label">Cars Delivered</span>
+        <!-- Contact Drawer -->
+        <div class="contact-drawer" id="contactDrawer">
+            <div class="contact-drawer__inner">
+                <div class="contact-drawer__col">
+                    <span class="contact-drawer__label">Phone</span>
+                    <a href="tel:+18005550199" class="contact-drawer__value">+1 (800) 555-0199</a>
                 </div>
-                <div class="stat" data-animate="fade-up">
-                    <span class="stat__num" data-count="37">0</span>
-                    <span class="stat__label">Years Active</span>
+                <div class="contact-drawer__col">
+                    <span class="contact-drawer__label">Email</span>
+                    <a href="mailto:concierge@apexmotors.com" class="contact-drawer__value">concierge@apexmotors.com</a>
                 </div>
-                <div class="stat" data-animate="fade-up">
-                    <span class="stat__num" data-count="98">0</span><span class="stat__suffix">%</span>
-                    <span class="stat__label">Client Satisfaction</span>
+                <div class="contact-drawer__col">
+                    <span class="contact-drawer__label">Location</span>
+                    <span class="contact-drawer__value">450 Motor Boulevard, Beverly Hills, CA 90210</span>
                 </div>
             </div>
         </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu__links">
+            <li><a href="#featured">Vehicles</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#listings">Inventory</a></li>
+            <li><a href="#trade-in">Trade-In</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="tel:+18005550199">Call Us</a></li>
+        </ul>
     </div>
-</section>
 
 
-<!-- Models -->
-<section class="models" id="models">
-    <div class="models__header">
-        <span class="tag" data-animate="fade-up">Collection</span>
-        <h2 class="section-title" data-split="words">Featured Models</h2>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero__bg">
+            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=2400&q=85" alt="Luxury sports car on open road" class="hero__img" loading="eager">
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <div class="hero__subtitle reveal-mask"><span>Established 2024 — Beverly Hills</span></div>
+            <h1 class="hero__title">
+                <span class="reveal-mask"><span>The Art of</span></span>
+                <span class="reveal-mask"><span>Automotive</span></span>
+                <span class="reveal-mask"><span class="gold">Excellence</span></span>
+            </h1>
+            <div class="hero__gold-line"></div>
+            <p class="hero__desc reveal-mask"><span>Curating the world's finest automobiles for discerning collectors and enthusiasts.</span></p>
+            <a href="#featured" class="hero__cta reveal-mask"><span>Explore Collection</span></a>
+        </div>
+        <div class="hero__stats">
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-target="450">0</span>
+                <span class="hero__stat-label">Vehicles Sold</span>
+            </div>
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-target="12">0</span>
+                <span class="hero__stat-label">Years Experience</span>
+            </div>
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-target="98">0</span>
+                <span class="hero__stat-label">Client Satisfaction %</span>
+            </div>
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-target="35">0</span>
+                <span class="hero__stat-label">Premium Brands</span>
+            </div>
+        </div>
+        <div class="hero__scroll-indicator">
+            <span>Scroll</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
+
+
+    <!-- Road Companion -->
+    <div class="road-companion" id="roadCompanion">
+        <svg class="road-companion__car" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 45 Q25 25 60 25 L100 20 Q140 18 160 25 L180 35 Q185 40 180 45 Z" fill="#C9A84C" opacity="0.3"/>
+            <ellipse cx="55" cy="48" rx="12" ry="12" fill="#252830"/>
+            <ellipse cx="55" cy="48" rx="6" ry="6" fill="#4A4844"/>
+            <ellipse cx="150" cy="48" rx="12" ry="12" fill="#252830"/>
+            <ellipse cx="150" cy="48" rx="6" ry="6" fill="#4A4844"/>
+        </svg>
     </div>
-    <div class="models__grid">
-        <div class="car-card" data-animate="fade-up">
-            <div class="car-card__img">
-                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80" alt="BMW M4">
-                <div class="car-card__overlay">
-                    <span class="car-card__price">$84,900</span>
-                    <span class="car-card__cta">View Details →</span>
+
+    <!-- Brand Marquee -->
+    <section class="marquee">
+        <div class="marquee__track">
+            <div class="marquee__content">
+                <span class="marquee__item">BMW</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Mercedes-Benz</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Porsche</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Audi</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Lamborghini</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Ferrari</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Bentley</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Rolls-Royce</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Maserati</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Aston Martin</span>
+                <span class="marquee__separator">&#x2022;</span>
+            </div>
+            <div class="marquee__content" aria-hidden="true">
+                <span class="marquee__item">BMW</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Mercedes-Benz</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Porsche</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Audi</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Lamborghini</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Ferrari</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Bentley</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Rolls-Royce</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Maserati</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Aston Martin</span>
+                <span class="marquee__separator">&#x2022;</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Featured Vehicles -->
+    <section class="featured" id="featured">
+        <div class="featured__header">
+            <div class="featured__label reveal-mask"><span>Featured Collection</span></div>
+            <h2 class="featured__title reveal-mask"><span>Handpicked for the Exceptional</span></h2>
+        </div>
+        <div class="featured__controls">
+            <div class="featured__progress">
+                <div class="featured__progress-bar" id="featuredProgress"></div>
+            </div>
+            <div class="featured__nav">
+                <button class="featured__nav-btn" id="featuredPrev" aria-label="Previous">&#8592;</button>
+                <button class="featured__nav-btn" id="featuredNext" aria-label="Next">&#8594;</button>
+            </div>
+        </div>
+        <div class="featured__track" id="featuredTrack">
+            <article class="featured__card">
+                <div class="featured__card-img">
+                    <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=800&q=85" alt="BMW M4 Competition in metallic blue" loading="lazy">
+                    <span class="featured__card-badge">New Arrival</span>
+                </div>
+                <div class="featured__card-body">
+                    <h3 class="featured__card-name">BMW M4 Competition</h3>
+                    <span class="featured__card-year">2024</span>
+                    <div class="featured__card-specs">
+                        <span>503 HP</span>
+                        <span>3.4s 0-60</span>
+                        <span>AWD</span>
+                    </div>
+                    <div class="featured__card-footer">
+                        <span class="featured__card-price">$84,900</span>
+                        <a href="#" class="featured__card-link">Details &#8594;</a>
+                    </div>
+                </div>
+            </article>
+            <article class="featured__card">
+                <div class="featured__card-img">
+                    <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=800&q=85" alt="Porsche 911 GT3 in white" loading="lazy">
+                    <span class="featured__card-badge">Limited</span>
+                </div>
+                <div class="featured__card-body">
+                    <h3 class="featured__card-name">Porsche 911 GT3</h3>
+                    <span class="featured__card-year">2024</span>
+                    <div class="featured__card-specs">
+                        <span>502 HP</span>
+                        <span>3.2s 0-60</span>
+                        <span>RWD</span>
+                    </div>
+                    <div class="featured__card-footer">
+                        <span class="featured__card-price">$169,700</span>
+                        <a href="#" class="featured__card-link">Details &#8594;</a>
+                    </div>
+                </div>
+            </article>
+            <article class="featured__card">
+                <div class="featured__card-img">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&q=85" alt="Mercedes AMG GT in silver" loading="lazy">
+                    <span class="featured__card-badge">Certified</span>
+                </div>
+                <div class="featured__card-body">
+                    <h3 class="featured__card-name">Mercedes-AMG GT</h3>
+                    <span class="featured__card-year">2023</span>
+                    <div class="featured__card-specs">
+                        <span>577 HP</span>
+                        <span>3.1s 0-60</span>
+                        <span>RWD</span>
+                    </div>
+                    <div class="featured__card-footer">
+                        <span class="featured__card-price">$142,500</span>
+                        <a href="#" class="featured__card-link">Details &#8594;</a>
+                    </div>
+                </div>
+            </article>
+            <article class="featured__card">
+                <div class="featured__card-img">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=85" alt="Audi RS e-tron GT in grey" loading="lazy">
+                    <span class="featured__card-badge">Electric</span>
+                </div>
+                <div class="featured__card-body">
+                    <h3 class="featured__card-name">Audi RS e-tron GT</h3>
+                    <span class="featured__card-year">2024</span>
+                    <div class="featured__card-specs">
+                        <span>637 HP</span>
+                        <span>3.1s 0-60</span>
+                        <span>AWD</span>
+                    </div>
+                    <div class="featured__card-footer">
+                        <span class="featured__card-price">$147,800</span>
+                        <a href="#" class="featured__card-link">Details &#8594;</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about__inner">
+            <div class="about__text">
+                <div class="about__label reveal-mask"><span>Our Philosophy</span></div>
+                <blockquote class="about__quote">
+                    <div class="about__quote-rule"></div>
+                    <p class="reveal-mask"><span>"We don't simply sell automobiles. We curate experiences, forge relationships, and deliver dreams wrapped in precision engineering."</span></p>
+                </blockquote>
+                <p class="about__desc reveal-mask"><span>Founded on the principle that acquiring a vehicle should be as exhilarating as driving one, APEX MOTORS has redefined the luxury automotive experience. Our team of specialists brings decades of combined expertise in sourcing, certifying, and presenting the world's most coveted machines.</span></p>
+                <div class="about__stat-card">
+                    <span class="about__stat-num" data-target="2847">0</span>
+                    <span class="about__stat-label">Happy Clients Since 2012</span>
                 </div>
             </div>
-            <div class="car-card__info">
-                <h3>BMW M4 Competition</h3>
-                <span>2024 · Twin-Turbo I6</span>
-            </div>
-        </div>
-        <div class="car-card" data-animate="fade-up">
-            <div class="car-card__img">
-                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&q=80" alt="Mercedes-AMG GT">
-                <div class="car-card__overlay">
-                    <span class="car-card__price">$162,900</span>
-                    <span class="car-card__cta">View Details →</span>
+            <div class="about__images">
+                <div class="about__img-main reveal-clip">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=85" alt="Red luxury sports car in showroom" loading="lazy">
                 </div>
-            </div>
-            <div class="car-card__info">
-                <h3>Mercedes-AMG GT</h3>
-                <span>2024 · V8 Biturbo</span>
-            </div>
-        </div>
-        <div class="car-card" data-animate="fade-up">
-            <div class="car-card__img">
-                <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=80" alt="Porsche 911 Turbo S">
-                <div class="car-card__overlay">
-                    <span class="car-card__price">$217,000</span>
-                    <span class="car-card__cta">View Details →</span>
-                </div>
-            </div>
-            <div class="car-card__info">
-                <h3>Porsche 911 Turbo S</h3>
-                <span>2024 · Flat-6 Twin-Turbo</span>
-            </div>
-        </div>
-        <div class="car-card" data-animate="fade-up">
-            <div class="car-card__img">
-                <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600&q=80" alt="Audi RS e-tron GT">
-                <div class="car-card__overlay">
-                    <span class="car-card__price">$147,800</span>
-                    <span class="car-card__cta">View Details →</span>
-                </div>
-            </div>
-            <div class="car-card__info">
-                <h3>Audi RS e-tron GT</h3>
-                <span>2024 · Dual-Motor Electric</span>
-            </div>
-        </div>
-        <div class="car-card" data-animate="fade-up">
-            <div class="car-card__img">
-                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80" alt="Bentley Continental GT">
-                <div class="car-card__overlay">
-                    <span class="car-card__price">$245,000</span>
-                    <span class="car-card__cta">View Details →</span>
-                </div>
-            </div>
-            <div class="car-card__info">
-                <h3>Bentley Continental GT</h3>
-                <span>2024 · W12 Twin-Turbo</span>
-            </div>
-        </div>
-        <div class="car-card" data-animate="fade-up">
-            <div class="car-card__img">
-                <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=600&q=80" alt="Range Rover">
-                <div class="car-card__overlay">
-                    <span class="car-card__price">$198,500</span>
-                    <span class="car-card__cta">View Details →</span>
-                </div>
-            </div>
-            <div class="car-card__info">
-                <h3>Range Rover Autobiography</h3>
-                <span>2024 · Supercharged V8</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- Horizontal Showcase -->
-<section class="showcase" id="showcase">
-    <div class="showcase__header">
-        <span class="tag" data-animate="fade-up">Gallery</span>
-        <h2 class="section-title" data-split="words">The Showcase</h2>
-    </div>
-    <div class="showcase__wrap">
-        <div class="showcase__track" id="showcaseTrack">
-            <div class="showcase__card">
-                <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=80" alt="Grand Tourer">
-                <div class="showcase__card-info"><span>Grand Touring</span><h3>Born for the Open Road</h3></div>
-            </div>
-            <div class="showcase__card">
-                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=80" alt="Performance">
-                <div class="showcase__card-info"><span>Performance</span><h3>Engineered Without Compromise</h3></div>
-            </div>
-            <div class="showcase__card">
-                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200&q=80" alt="Modern Classic">
-                <div class="showcase__card-info"><span>Modern Classic</span><h3>Timeless Design, Modern Soul</h3></div>
-            </div>
-            <div class="showcase__card">
-                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&q=80" alt="Lifestyle">
-                <div class="showcase__card-info"><span>Lifestyle</span><h3>Every Drive, An Adventure</h3></div>
-            </div>
-            <div class="showcase__card">
-                <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1200&q=80" alt="Heritage">
-                <div class="showcase__card-info"><span>Heritage</span><h3>Legends Never Fade</h3></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Why Us (Bento) -->
-<section class="bento" id="why-us">
-    <div class="bento__header">
-        <span class="tag" data-animate="fade-up">Why Us</span>
-        <h2 class="section-title" data-split="words">The Prestige Difference</h2>
-    </div>
-    <div class="bento__grid">
-        <div class="bento__card bento__card--lg" data-animate="fade-up">
-            <div class="bento__icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            </div>
-            <h3>Certified Pre-Owned</h3>
-            <p>Every vehicle undergoes a rigorous 200-point inspection by master technicians. We accept only the top 3% of pre-owned vehicles that meet our exacting standards.</p>
-        </div>
-        <div class="bento__card" data-animate="fade-up">
-            <div class="bento__icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <h3>Flexible Financing</h3>
-            <p>Rates starting from 2.9% APR with 20+ premium lenders.</p>
-        </div>
-        <div class="bento__card" data-animate="fade-up">
-            <div class="bento__icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-            </div>
-            <h3>Trade-In Program</h3>
-            <p>Fair market value assessments within 30 minutes.</p>
-        </div>
-        <div class="bento__card bento__card--wide" data-animate="fade-up">
-            <div class="bento__icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-            </div>
-            <h3>Lifetime Powertrain Warranty</h3>
-            <p>Drive with absolute confidence. Our comprehensive lifetime warranty covers engine, transmission, and drivetrain — for as long as you own the vehicle. No fine print, no surprises.</p>
-        </div>
-    </div>
-</section>
-
-
-<!-- Testimonials -->
-<section class="testimonials" id="testimonials">
-    <div class="testimonials__inner">
-        <span class="tag" data-animate="fade-up">Client Stories</span>
-        <h2 class="section-title" data-split="words">What They Say</h2>
-        <div class="testimonials__slider" id="testimonialSlider">
-            <div class="testimonial active">
-                <blockquote>"The entire experience was phenomenal. From the moment I walked in, I felt like royalty. They found me the exact spec I wanted and delivered it flawlessly."</blockquote>
-                <div class="testimonial__author">
-                    <strong>James Morrison</strong>
-                    <span>Porsche 911 Turbo S</span>
-                </div>
-            </div>
-            <div class="testimonial">
-                <blockquote>"Prestige Motors made my dream come true. The financing was seamless, and their attention to detail is unmatched. I'll never buy from anywhere else."</blockquote>
-                <div class="testimonial__author">
-                    <strong>Sarah Chen</strong>
-                    <span>Mercedes-AMG GT</span>
-                </div>
-            </div>
-            <div class="testimonial">
-                <blockquote>"Third car I've purchased here. The trade-in value was incredibly fair, and they sourced a rare color combination for my new Bentley in under a week."</blockquote>
-                <div class="testimonial__author">
-                    <strong>Robert Kim</strong>
-                    <span>Bentley Continental GT</span>
+                <div class="about__img-secondary reveal-clip">
+                    <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=600&q=85" alt="Classic car detail shot showing chrome grille" loading="lazy">
                 </div>
             </div>
         </div>
-        <div class="testimonials__progress">
-            <div class="testimonials__bar" id="testimonialBar"></div>
-        </div>
-        <div class="testimonials__nav">
-            <button class="testimonials__btn magnetic" id="testPrev">←</button>
-            <button class="testimonials__btn magnetic" id="testNext">→</button>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq">
-    <div class="faq__inner">
-        <div class="faq__left">
-            <span class="tag" data-animate="fade-up">FAQ</span>
-            <h2 class="section-title" data-split="words">Common Questions</h2>
-            <p class="faq__desc" data-animate="fade-up">Everything you need to know about our process, warranties, and services.</p>
-        </div>
-        <div class="faq__right">
-            <div class="faq__item" data-animate="fade-up">
-                <button class="faq__q">What financing options do you offer?<span class="faq__icon">+</span></button>
-                <div class="faq__a"><p>We partner with over 20 premium lenders offering rates from 2.9% APR. Traditional loans, leases, and balloon structures available. Pre-approval in minutes.</p></div>
-            </div>
-            <div class="faq__item" data-animate="fade-up">
-                <button class="faq__q">How does the trade-in process work?<span class="faq__icon">+</span></button>
-                <div class="faq__a"><p>Bring your vehicle or submit details online. Certified appraisers provide a fair, no-obligation offer within 30 minutes. Trade-in value applied directly to your purchase.</p></div>
-            </div>
-            <div class="faq__item" data-animate="fade-up">
-                <button class="faq__q">What does the lifetime warranty cover?<span class="faq__icon">+</span></button>
-                <div class="faq__a"><p>Engine, transmission, and drivetrain for life. Optional comprehensive coverage includes electrical, suspension, and climate. No mileage limits.</p></div>
-            </div>
-            <div class="faq__item" data-animate="fade-up">
-                <button class="faq__q">Can I schedule a test drive?<span class="faq__icon">+</span></button>
-                <div class="faq__a"><p>Online, by phone, or walk-in. We offer extended 24-hour test drives for serious buyers so you can truly live with the car before committing.</p></div>
-            </div>
-            <div class="faq__item" data-animate="fade-up">
-                <button class="faq__q">Do you deliver nationwide?<span class="faq__icon">+</span></button>
-                <div class="faq__a"><p>Complimentary enclosed transport within 200 miles. White-glove nationwide delivery available. Vehicle arrives detailed with a full tank.</p></div>
-            </div>
-            <div class="faq__item" data-animate="fade-up">
-                <button class="faq__q">What inspection do vehicles undergo?<span class="faq__icon">+</span></button>
-                <div class="faq__a"><p>200-point inspection by factory-trained technicians. Full history report, maintenance records, and detailed condition report included. Only the top 3% make it to our floor.</p></div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 
-<!-- CTA -->
-<section class="cta" id="cta">
-    <div class="cta__bg">
-        <img src="https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=1920&q=80" alt="Luxury drive" loading="lazy">
-    </div>
-    <div class="cta__content" data-animate="fade-up">
-        <h2 class="section-title" data-split="words">Your Dream Car Awaits</h2>
-        <p>Whether you're seeking your first luxury vehicle or adding to a collection, our team is ready. Visit our Beverly Hills showroom or call today.</p>
-        <div class="cta__buttons">
-            <a href="#" class="btn btn--gold magnetic">Schedule a Visit</a>
-            <a href="tel:+18005551987" class="btn btn--outline magnetic">Call (800) 555-1987</a>
+    <!-- Listings Grid -->
+    <section class="listings" id="listings">
+        <div class="listings__header">
+            <div class="listings__label reveal-mask"><span>Our Inventory</span></div>
+            <h2 class="listings__title reveal-mask"><span>Browse the Collection</span></h2>
         </div>
-    </div>
-</section>
+        <div class="listings__filters">
+            <div class="listings__filter-indicator" id="filterIndicator"></div>
+            <button class="listings__filter active" data-filter="all">All</button>
+            <button class="listings__filter" data-filter="sports">Sports</button>
+            <button class="listings__filter" data-filter="suv">SUV</button>
+            <button class="listings__filter" data-filter="sedan">Sedan</button>
+            <button class="listings__filter" data-filter="electric">Electric</button>
+            <button class="listings__filter" data-filter="luxury">Luxury</button>
+        </div>
+        <div class="listings__grid" id="listingsGrid">
+            <article class="listings__card" data-category="sports">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=800&q=85" alt="BMW M4 Competition" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>BMW M4 Competition</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>503 HP</span><span>2,100 mi</span>
+                    </div>
+                    <span class="listings__card-price">$84,900</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="sports">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=800&q=85" alt="Porsche 911 GT3" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Porsche 911 GT3</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>502 HP</span><span>850 mi</span>
+                    </div>
+                    <span class="listings__card-price">$169,700</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="luxury">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&q=85" alt="Mercedes-AMG GT" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Mercedes-AMG GT</h3>
+                    <div class="listings__card-meta">
+                        <span>2023</span><span>577 HP</span><span>5,400 mi</span>
+                    </div>
+                    <span class="listings__card-price">$142,500</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="electric">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=85" alt="Audi RS e-tron GT" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Audi RS e-tron GT</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>637 HP</span><span>1,200 mi</span>
+                    </div>
+                    <span class="listings__card-price">$147,800</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="suv">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1562911791-c7a97b729ec5?w=800&q=85" alt="Range Rover Autobiography" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Range Rover Autobiography</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>523 HP</span><span>3,800 mi</span>
+                    </div>
+                    <span class="listings__card-price">$198,500</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="suv">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&q=85" alt="Porsche Cayenne Turbo GT" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Porsche Cayenne Turbo GT</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>631 HP</span><span>4,200 mi</span>
+                    </div>
+                    <span class="listings__card-price">$185,000</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="sedan">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1618843479619-f3d0d81e4d10?w=800&q=85" alt="Mercedes S-Class" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Mercedes-Benz S 580</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>496 HP</span><span>6,100 mi</span>
+                    </div>
+                    <span class="listings__card-price">$119,900</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="sports">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=85" alt="Audi RS7 Sportback" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Audi RS7 Sportback</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>621 HP</span><span>2,900 mi</span>
+                    </div>
+                    <span class="listings__card-price">$128,400</span>
+                </div>
+            </article>
+        </div>
+    </section>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer__top">
-        <div class="footer__brand">
-            <span class="footer__logo">PRESTIGE MOTORS</span>
-            <p>Curating extraordinary automobiles for discerning enthusiasts since 1987.</p>
-        </div>
-        <div class="footer__col">
-            <h4>Explore</h4>
-            <a href="#models">Inventory</a>
-            <a href="#about">About Us</a>
-            <a href="#showcase">Gallery</a>
-            <a href="#testimonials">Reviews</a>
-        </div>
-        <div class="footer__col">
-            <h4>Contact</h4>
-            <a href="#">1200 Prestige Blvd</a>
-            <a href="#">Beverly Hills, CA 90210</a>
-            <a href="tel:+18005551987">(800) 555-1987</a>
-            <a href="mailto:info@prestigemotors.com">info@prestigemotors.com</a>
-        </div>
-        <div class="footer__col">
-            <h4>Hours</h4>
-            <a href="#">Mon–Fri: 9AM–8PM</a>
-            <a href="#">Saturday: 10AM–6PM</a>
-            <a href="#">Sunday: By Appointment</a>
-        </div>
-    </div>
-    <div class="footer__bottom">
-        <span>© 2026 Prestige Motors. All rights reserved.</span>
-        <button class="footer__top-btn magnetic" id="backToTop">Back to Top ↑</button>
-    </div>
-</footer>
 
-<!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="script.js"></script>
+    <!-- Promise Section -->
+    <section class="promise" id="promise">
+        <div class="promise__header">
+            <div class="promise__label reveal-mask"><span>The APEX Promise</span></div>
+            <h2 class="promise__title reveal-mask"><span>Uncompromising Standards</span></h2>
+        </div>
+        <div class="promise__grid">
+            <div class="promise__card">
+                <div class="promise__card-rule"></div>
+                <span class="promise__card-num">01</span>
+                <h3 class="promise__card-title">200-Point Inspection</h3>
+                <p class="promise__card-desc">Every vehicle undergoes our rigorous 200-point certification process, ensuring mechanical perfection and cosmetic excellence before reaching our showroom floor.</p>
+            </div>
+            <div class="promise__card">
+                <div class="promise__card-rule"></div>
+                <span class="promise__card-num">02</span>
+                <h3 class="promise__card-title">Concierge Delivery</h3>
+                <p class="promise__card-desc">Your vehicle arrives at your doorstep, detailed to perfection, with a personal specialist to walk you through every feature and answer any questions.</p>
+            </div>
+            <div class="promise__card">
+                <div class="promise__card-rule"></div>
+                <span class="promise__card-num">03</span>
+                <h3 class="promise__card-title">Lifetime Relationship</h3>
+                <p class="promise__card-desc">Our commitment extends beyond the sale. Enjoy priority service, exclusive events, and a dedicated advisor for as long as you own your APEX vehicle.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Trade-In Section -->
+    <section class="trade-in" id="trade-in">
+        <div class="trade-in__inner">
+            <div class="trade-in__image">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85" alt="Luxury car driving on coastal road" loading="lazy">
+            </div>
+            <div class="trade-in__content">
+                <div class="trade-in__label reveal-mask"><span>Trade-In Program</span></div>
+                <h2 class="trade-in__title reveal-mask"><span>Upgrade Your Drive</span></h2>
+                <p class="trade-in__desc reveal-mask"><span>Get a premium valuation for your current vehicle and seamlessly transition into your next automotive masterpiece.</span></p>
+                <div class="trade-in__wizard" id="tradeWizard">
+                    <div class="trade-in__steps">
+                        <div class="trade-in__step active" data-step="1">
+                            <span class="trade-in__step-num">1</span>
+                            <span class="trade-in__step-text">Vehicle Info</span>
+                        </div>
+                        <div class="trade-in__step" data-step="2">
+                            <span class="trade-in__step-num">2</span>
+                            <span class="trade-in__step-text">Condition</span>
+                        </div>
+                        <div class="trade-in__step" data-step="3">
+                            <span class="trade-in__step-num">3</span>
+                            <span class="trade-in__step-text">Contact</span>
+                        </div>
+                    </div>
+                    <div class="trade-in__forms">
+                        <form class="trade-in__form active" data-form="1">
+                            <div class="trade-in__field">
+                                <label for="tradeYear">Year</label>
+                                <select id="tradeYear">
+                                    <option value="">Select Year</option>
+                                    <option>2024</option>
+                                    <option>2023</option>
+                                    <option>2022</option>
+                                    <option>2021</option>
+                                    <option>2020</option>
+                                    <option>2019</option>
+                                    <option>2018</option>
+                                </select>
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradeMake">Make</label>
+                                <input type="text" id="tradeMake" placeholder="e.g. BMW, Mercedes">
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradeModel">Model</label>
+                                <input type="text" id="tradeModel" placeholder="e.g. M4, S-Class">
+                            </div>
+                            <button type="button" class="trade-in__next" data-next="2">Next Step &#8594;</button>
+                        </form>
+                        <form class="trade-in__form" data-form="2">
+                            <div class="trade-in__field">
+                                <label for="tradeMileage">Mileage</label>
+                                <input type="text" id="tradeMileage" placeholder="e.g. 25,000">
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradeCondition">Condition</label>
+                                <select id="tradeCondition">
+                                    <option value="">Select Condition</option>
+                                    <option>Excellent</option>
+                                    <option>Good</option>
+                                    <option>Fair</option>
+                                    <option>Needs Work</option>
+                                </select>
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradeNotes">Additional Notes</label>
+                                <textarea id="tradeNotes" placeholder="Any modifications, damage, etc." rows="3"></textarea>
+                            </div>
+                            <div class="trade-in__form-nav">
+                                <button type="button" class="trade-in__prev" data-prev="1">&#8592; Back</button>
+                                <button type="button" class="trade-in__next" data-next="3">Next Step &#8594;</button>
+                            </div>
+                        </form>
+                        <form class="trade-in__form" data-form="3">
+                            <div class="trade-in__field">
+                                <label for="tradeName">Full Name</label>
+                                <input type="text" id="tradeName" placeholder="John Smith">
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradeEmail">Email</label>
+                                <input type="email" id="tradeEmail" placeholder="john@example.com">
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradePhone">Phone</label>
+                                <input type="tel" id="tradePhone" placeholder="+1 (555) 000-0000">
+                            </div>
+                            <div class="trade-in__form-nav">
+                                <button type="button" class="trade-in__prev" data-prev="2">&#8592; Back</button>
+                                <button type="submit" class="trade-in__submit">Get Valuation</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials__inner">
+            <div class="testimonials__label reveal-mask"><span>Client Stories</span></div>
+            <h2 class="testimonials__title reveal-mask"><span>Words from Our Community</span></h2>
+            <div class="testimonials__carousel" id="testimonialCarousel">
+                <div class="testimonials__slide active">
+                    <p class="testimonials__text">"The entire experience was unlike anything I've encountered. From the first call to delivery day, APEX made me feel like their only client. The M4 Competition exceeded every expectation."</p>
+                    <div class="testimonials__author">
+                        <span class="testimonials__name">Marcus Chen</span>
+                        <span class="testimonials__role">BMW M4 Owner</span>
+                    </div>
+                </div>
+                <div class="testimonials__slide">
+                    <p class="testimonials__text">"I've purchased numerous luxury vehicles over the years, but APEX's attention to detail is unmatched. They found me a 911 GT3 allocation when every other dealer had a two-year waitlist."</p>
+                    <div class="testimonials__author">
+                        <span class="testimonials__name">Victoria Reynolds</span>
+                        <span class="testimonials__role">Porsche 911 GT3 Owner</span>
+                    </div>
+                </div>
+                <div class="testimonials__slide">
+                    <p class="testimonials__text">"What sets APEX apart is their post-purchase care. Three years later, they still reach out, arrange service appointments, and invite us to exclusive track days. They're family now."</p>
+                    <div class="testimonials__author">
+                        <span class="testimonials__name">James & Sarah Mitchell</span>
+                        <span class="testimonials__role">Mercedes-AMG GT Owners</span>
+                    </div>
+                </div>
+                <div class="testimonials__slide">
+                    <p class="testimonials__text">"The trade-in process was seamless. They offered 15% above market value for my old RS5 and had me in a brand new RS e-tron GT within a week. Absolutely phenomenal service."</p>
+                    <div class="testimonials__author">
+                        <span class="testimonials__name">David Park</span>
+                        <span class="testimonials__role">Audi RS e-tron GT Owner</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonials__dots" id="testimonialDots">
+                <button class="testimonials__dot active" data-slide="0" aria-label="Slide 1"></button>
+                <button class="testimonials__dot" data-slide="1" aria-label="Slide 2"></button>
+                <button class="testimonials__dot" data-slide="2" aria-label="Slide 3"></button>
+                <button class="testimonials__dot" data-slide="3" aria-label="Slide 4"></button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="faq__watermark">FAQ</div>
+        <div class="faq__inner">
+            <div class="faq__header">
+                <div class="faq__label reveal-mask"><span>Common Questions</span></div>
+                <h2 class="faq__title reveal-mask"><span>Everything You Need to Know</span></h2>
+            </div>
+            <div class="faq__grid">
+                <div class="faq__col">
+                    <details class="faq__item">
+                        <summary class="faq__question">What financing options are available?</summary>
+                        <div class="faq__answer">We partner with premium lenders to offer competitive rates starting at 3.9% APR. Our finance team can structure leases, traditional loans, or balloon payments tailored to your needs. We also accept cryptocurrency and wire transfers for immediate purchases.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">Do you offer nationwide delivery?</summary>
+                        <div class="faq__answer">Absolutely. We provide enclosed transport delivery anywhere in the continental United States, included complimentary for vehicles over $100,000. International shipping is available to select countries with full customs handling.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">What is your return policy?</summary>
+                        <div class="faq__answer">We offer a 7-day/500-mile return guarantee on all certified vehicles. If you're not completely satisfied, return the vehicle in the same condition for a full refund minus a $500 restocking fee. No questions asked.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">Can I schedule a test drive?</summary>
+                        <div class="faq__answer">Test drives can be scheduled online or by calling our concierge team. We offer both on-site experiences at our Beverly Hills showroom and complimentary at-home test drives within a 50-mile radius for qualified buyers.</div>
+                    </details>
+                </div>
+                <div class="faq__col">
+                    <details class="faq__item">
+                        <summary class="faq__question">How does the trade-in process work?</summary>
+                        <div class="faq__answer">Simply fill out our online trade-in form or bring your vehicle to our showroom. Our certified appraisers will provide a market-competitive offer within 30 minutes. We consistently offer above KBB values for well-maintained vehicles.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">Are your vehicles certified pre-owned?</summary>
+                        <div class="faq__answer">Every vehicle in our inventory undergoes a comprehensive 200-point inspection by factory-trained technicians. We provide a complete CARFAX history report, remaining manufacturer warranty details, and our own 12-month/12,000-mile supplemental warranty.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">Do you source specific vehicles on request?</summary>
+                        <div class="faq__answer">Yes, our acquisition team specializes in locating rare and specific vehicles worldwide. Whether you're seeking a particular color combination, limited edition, or classic model, we leverage our global dealer network to find exactly what you want.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">What about after-sale support?</summary>
+                        <div class="faq__answer">Every APEX client receives a dedicated relationship manager, priority scheduling at our service center, complimentary annual detailing, and invitations to exclusive automotive events. Our support never expires — once an APEX client, always an APEX client.</div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer__ghost-car">
+            <svg viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 90 Q50 50 120 50 L200 40 Q280 36 320 50 L360 70 Q370 80 360 90 Z" fill="#0F1012" opacity="0.5"/>
+                <ellipse cx="110" cy="96" rx="20" ry="20" fill="#0F1012"/>
+                <ellipse cx="300" cy="96" rx="20" ry="20" fill="#0F1012"/>
+            </svg>
+        </div>
+        <div class="footer__inner">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <a href="#" class="footer__logo">APEX<span class="gold">.</span></a>
+                    <p class="footer__tagline">The Art of Automotive Excellence</p>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__nav-col">
+                        <h4>Showroom</h4>
+                        <ul>
+                            <li><a href="#featured">Featured</a></li>
+                            <li><a href="#listings">All Vehicles</a></li>
+                            <li><a href="#">New Arrivals</a></li>
+                            <li><a href="#">Coming Soon</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__nav-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#trade-in">Trade-In</a></li>
+                            <li><a href="#">Financing</a></li>
+                            <li><a href="#">Vehicle Sourcing</a></li>
+                            <li><a href="#">Maintenance</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__nav-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__nav-col">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">YouTube</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="#">Twitter / X</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__rule"></div>
+            <div class="footer__bottom">
+                <span>&copy; 2024 APEX MOTORS. All rights reserved.</span>
+                <div class="footer__legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
