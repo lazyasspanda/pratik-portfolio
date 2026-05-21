@@ -512,3 +512,315 @@
   });
 
 })();
+
+
+
+
+/* ============================================================
+   ENHANCED MOTION LAYER — premium, optimized
+   Self-contained IIFE; runs after the main script has set up
+   the foundational interactions above.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const hasGsap = typeof window.gsap !== 'undefined';
+  const hasST = typeof window.ScrollTrigger !== 'undefined';
+  if (hasGsap && hasST) gsap.registerPlugin(ScrollTrigger);
+
+
+  /* ---------------------------------------------------------
+     Custom cursor — CSS variable approach, no rAF lerp.
+     The browser interpolates via CSS transition on top/left.
+     We coalesce mousemove with rAF to throttle DOM updates.
+     --------------------------------------------------------- */
+  const cursor = document.getElementById('cursor');
+  if (cursor && isFinePointer) {
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    let pending = false;
+    const updateCursor = () => {
+      cursor.style.setProperty('--cx', mx + 'px');
+      cursor.style.setProperty('--cy', my + 'px');
+      pending = false;
+    };
+    document.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      if (!pending) { pending = true; requestAnimationFrame(updateCursor); }
+    }, { passive: true });
+
+    const hoverEls = 'a, button, [data-magnetic], [data-magnetic-soft], select, input, textarea, label, .spec-tile, .fleet-card, .feat, .showcase-rail-card, .showcase-frame, .immersive-cta, .hero-lens';
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest && e.target.closest(hoverEls)) cursor.classList.add('is-hover');
+    });
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest && e.target.closest(hoverEls)) cursor.classList.remove('is-hover');
+    });
+
+    // Sync cursor light/dark with nav theme
+    const navEl = document.getElementById('nav');
+    if (navEl) {
+      const syncTheme = () => cursor.classList.toggle('on-light', navEl.classList.contains('on-light'));
+      const mo = new MutationObserver(syncTheme);
+      mo.observe(navEl, { attributes: true, attributeFilter: ['class'] });
+      syncTheme();
+    }
+  }
+
+
+  /* ---------------------------------------------------------
+     Scroll progress bar — rAF coalesced
+     --------------------------------------------------------- */
+  const progressEl = document.getElementById('scrollProgress');
+  if (progressEl) {
+    let pendingProg = false;
+    const updateProgress = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      progressEl.style.width = pct.toFixed(2) + '%';
+      pendingProg = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!pendingProg) { pendingProg = true; requestAnimationFrame(updateProgress); }
+    }, { passive: true });
+    updateProgress();
+  }
+
+
+
+
+  /* ---------------------------------------------------------
+     IMAGE CLIP-PATH REVEALS on scroll-in (cinematic wipe-up)
+     --------------------------------------------------------- */
+  if (!reduceMotion) {
+    const imgRevealObs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-revealed');
+        imgRevealObs.unobserve(e.target);
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('[data-reveal-image]').forEach((el) => imgRevealObs.observe(el));
+  } else {
+    document.querySelectorAll('[data-reveal-image]').forEach((el) => el.classList.add('is-revealed'));
+  }
+
+
+  /* ---------------------------------------------------------
+     STAGGER reveal for grid items (.feat, .fleet-card, etc.)
+     One-shot, then unobserved.
+     --------------------------------------------------------- */
+  if (!reduceMotion) {
+    const staggerObs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const grid = e.target;
+        const items = grid.querySelectorAll('.feat, .fleet-card, .showcase-rail-card, .spec-tile');
+        items.forEach((it, i) => {
+          it.style.transitionDelay = (i * 80) + 'ms';
+          it.classList.add('is-in');
+        });
+        staggerObs.unobserve(grid);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.features-grid, .fleet-grid, .showcase-rail, .spec-tiles')
+      .forEach((g) => staggerObs.observe(g));
+  } else {
+    document.querySelectorAll('.feat, .fleet-card, .showcase-rail-card, .spec-tile')
+      .forEach((it) => it.classList.add('is-in'));
+  }
+
+
+  /* ---------------------------------------------------------
+     3D TILT cards (CSS variables — zero idle cost).
+     The browser interpolates via CSS transition.
+     We only update vars on mousemove and reset on mouseleave.
+     --------------------------------------------------------- */
+  if (isFinePointer && !reduceMotion) {
+    const tiltConfig = {
+      strong: { rx: 8, ry: 10 },
+      soft:   { rx: 4, ry: 6 },
+      default:{ rx: 5, ry: 7 }
+    };
+    document.querySelectorAll('[data-tilt]').forEach((el) => {
+      const intensity = el.dataset.tilt || 'default';
+      const cfg = tiltConfig[intensity] || tiltConfig.default;
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.setProperty('--rx', (y * -cfg.rx).toFixed(2) + 'deg');
+        el.style.setProperty('--ry', (x * cfg.ry).toFixed(2) + 'deg');
+      }, { passive: true });
+      el.addEventListener('mouseleave', () => {
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      });
+    });
+  }
+
+
+  /* ---------------------------------------------------------
+     LENS — subtle parallax of underlying images on mousemove.
+     Adds depth WITHIN the lens card without rAF.
+     Composes with the existing reveal-mask logic above.
+     --------------------------------------------------------- */
+  if (isFinePointer && !reduceMotion) {
+    const heroLens = document.getElementById('heroLens');
+    if (heroLens) {
+      heroLens.addEventListener('mousemove', (e) => {
+        const r = heroLens.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        heroLens.style.setProperty('--lpx', (x * -10).toFixed(2) + 'px');
+        heroLens.style.setProperty('--lpy', (y * -8).toFixed(2) + 'px');
+      }, { passive: true });
+      heroLens.addEventListener('mouseleave', () => {
+        heroLens.style.setProperty('--lpx', '0px');
+        heroLens.style.setProperty('--lpy', '0px');
+      });
+    }
+  }
+
+
+  /* ---------------------------------------------------------
+     SPEC TILE cursor-following highlight (CSS var, no rAF)
+     --------------------------------------------------------- */
+  if (isFinePointer && !reduceMotion) {
+    document.querySelectorAll('.spec-tile').forEach((tile) => {
+      tile.addEventListener('mousemove', (e) => {
+        const r = tile.getBoundingClientRect();
+        const gx = ((e.clientX - r.left) / r.width) * 100;
+        const gy = ((e.clientY - r.top) / r.height) * 100;
+        tile.style.setProperty('--gx', gx.toFixed(1) + '%');
+        tile.style.setProperty('--gy', gy.toFixed(1) + '%');
+      }, { passive: true });
+    });
+  }
+
+
+
+
+  /* ---------------------------------------------------------
+     COUNTER ANIMATIONS — one-shot on intersect.
+     Uses GSAP if available, else just shows the final value.
+     --------------------------------------------------------- */
+  const counters = document.querySelectorAll('[data-counter]');
+  if (counters.length) {
+    const setText = (el, value) => {
+      const decimals = parseInt(el.dataset.counterDecimals || '0', 10);
+      const prefix = el.dataset.counterPrefix || '';
+      const suffix = el.dataset.counterSuffix || '';
+      el.textContent = prefix + value.toFixed(decimals) + suffix;
+    };
+    if (!reduceMotion && hasGsap) {
+      // pre-set to zero
+      counters.forEach((el) => setText(el, 0));
+      const counterObs = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          const target = parseFloat(el.dataset.counter);
+          const obj = { v: 0 };
+          gsap.to(obj, {
+            v: target,
+            duration: 1.6,
+            ease: 'power2.out',
+            onUpdate: () => setText(el, obj.v)
+          });
+          counterObs.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      counters.forEach((el) => counterObs.observe(el));
+    }
+  }
+
+
+  /* ---------------------------------------------------------
+     CHAPTER IMAGE PARALLAX — ScrollTrigger scrub.
+     Only runs work when triggers are in the viewport.
+     --------------------------------------------------------- */
+  if (hasGsap && hasST && !reduceMotion) {
+    document.querySelectorAll('[data-parallax-img]').forEach((img) => {
+      gsap.fromTo(img,
+        { yPercent: -8 },
+        {
+          yPercent: 8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1
+          }
+        }
+      );
+    });
+
+    // Spotlight image gentle ken-burns
+    const spotImg = document.querySelector('.spotlight-image img');
+    if (spotImg) {
+      gsap.fromTo(spotImg,
+        { scale: 1.05, yPercent: -3 },
+        {
+          scale: 1.18, yPercent: 3,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.spotlight',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.2
+          }
+        }
+      );
+    }
+
+    // Showcase rail subtle group lift on scroll into view
+    const railCards = document.querySelectorAll('.showcase-rail-card');
+    if (railCards.length) {
+      gsap.fromTo(railCards,
+        { y: 40, opacity: 0 },
+        {
+          y: 0, opacity: 1,
+          duration: 1.0,
+          ease: 'power3.out',
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: '.showcase-rail',
+            start: 'top 85%',
+            once: true
+          }
+        }
+      );
+    }
+  }
+
+
+  /* ---------------------------------------------------------
+     MARQUEE — pause when off-screen to save composition
+     --------------------------------------------------------- */
+  const marqueeRow = document.querySelector('.marquee-row');
+  if (marqueeRow && !reduceMotion) {
+    const mqObs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        marqueeRow.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+      });
+    }, { threshold: 0 });
+    mqObs.observe(marqueeRow);
+  }
+
+
+  /* ---------------------------------------------------------
+     Refresh ScrollTrigger after fonts/images load
+     --------------------------------------------------------- */
+  if (hasST) {
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+    let resizeT;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(() => ScrollTrigger.refresh(), 250);
+    }, { passive: true });
+  }
+
+})();

@@ -13,6 +13,15 @@
 </head>
 <body>
 
+<!-- Scroll progress (top hairline) -->
+<span class="scroll-progress" id="scrollProgress" aria-hidden="true"></span>
+
+<!-- Custom cursor (lightweight, CSS-var driven) -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor-ring"></span>
+  <span class="cursor-dot"></span>
+</div>
+
 <!-- NAV -->
 <header class="nav" id="nav">
   <div class="nav-inner">
@@ -75,7 +84,7 @@
     </div>
 
     <!-- Confined lens card (only the right zone of the hero) -->
-    <div class="hero-lens" id="heroLens">
+    <div class="hero-lens" id="heroLens" data-tilt="strong">
       <div class="lens-layer lens-layer--base">
         <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1400&amp;q=85" alt="Vehicle in cold conditions" loading="eager" />
         <span class="lens-veil lens-veil--cold" aria-hidden="true"></span>
@@ -178,7 +187,7 @@
   </div>
 
   <div class="showcase-stage">
-    <div class="showcase-frame">
+    <div class="showcase-frame" data-tilt data-reveal-image>
       <div class="showcase-image">
         <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=2000&amp;q=85" alt="Aether S1 primary showcase" loading="lazy" />
       </div>
@@ -199,8 +208,8 @@
   </div>
 
   <div class="showcase-rail">
-    <article class="showcase-rail-card">
-      <div class="showcase-rail-image">
+    <article class="showcase-rail-card" data-tilt="soft">
+      <div class="showcase-rail-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1200&amp;q=85" alt="Aether R3 silhouette" loading="lazy" />
       </div>
       <div class="showcase-rail-meta">
@@ -209,8 +218,8 @@
         <p class="showcase-rail-line">Restraint, expressed in motion.</p>
       </div>
     </article>
-    <article class="showcase-rail-card">
-      <div class="showcase-rail-image">
+    <article class="showcase-rail-card" data-tilt="soft">
+      <div class="showcase-rail-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&amp;q=85" alt="Aether E7 cabin" loading="lazy" />
       </div>
       <div class="showcase-rail-meta">
@@ -219,8 +228,8 @@
         <p class="showcase-rail-line">Space that doesn&rsquo;t announce itself.</p>
       </div>
     </article>
-    <article class="showcase-rail-card">
-      <div class="showcase-rail-image">
+    <article class="showcase-rail-card" data-tilt="soft">
+      <div class="showcase-rail-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&amp;q=85" alt="Aether A0 city coupe" loading="lazy" />
       </div>
       <div class="showcase-rail-meta">
@@ -239,8 +248,8 @@
 <section class="chapter chapter--dark" id="ch01">
   <div class="chapter-grid">
     <div class="chapter-image">
-      <div class="image-clip">
-        <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1400&amp;q=85" alt="Vehicle exterior detail" loading="lazy" />
+      <div class="image-clip" data-reveal-image>
+        <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1400&amp;q=85" alt="Vehicle exterior detail" loading="lazy" data-parallax-img />
       </div>
       <span class="mono micro img-tag">PLATE 02 &middot; PRESENCE</span>
     </div>
@@ -265,9 +274,9 @@
   </div>
 
   <div class="features-grid">
-    <article class="feat feat--01">
+    <article class="feat feat--01" data-tilt="soft">
       <span class="feat-num mono micro">01</span>
-      <div class="feat-image">
+      <div class="feat-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&amp;q=85" alt="Hand-stitched leather" loading="lazy" />
       </div>
       <div class="feat-meta">
@@ -276,9 +285,9 @@
       </div>
     </article>
 
-    <article class="feat feat--02">
+    <article class="feat feat--02" data-tilt="soft">
       <span class="feat-num mono micro">02</span>
-      <div class="feat-image">
+      <div class="feat-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&amp;q=85" alt="Vehicle in motion" loading="lazy" />
       </div>
       <div class="feat-meta">
@@ -287,9 +296,9 @@
       </div>
     </article>
 
-    <article class="feat feat--03">
+    <article class="feat feat--03" data-tilt="soft">
       <span class="feat-num mono micro">03</span>
-      <div class="feat-image">
+      <div class="feat-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&amp;q=85" alt="Material study" loading="lazy" />
       </div>
       <div class="feat-meta">
@@ -298,9 +307,9 @@
       </div>
     </article>
 
-    <article class="feat feat--04">
+    <article class="feat feat--04" data-tilt="soft">
       <span class="feat-num mono micro">04</span>
-      <div class="feat-image">
+      <div class="feat-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1200&amp;q=85" alt="Cabin interior" loading="lazy" />
       </div>
       <div class="feat-meta">
@@ -309,9 +318,9 @@
       </div>
     </article>
 
-    <article class="feat feat--05">
+    <article class="feat feat--05" data-tilt="soft">
       <span class="feat-num mono micro">05</span>
-      <div class="feat-image">
+      <div class="feat-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=1200&amp;q=85" alt="Sustainable materials" loading="lazy" />
       </div>
       <div class="feat-meta">
@@ -340,11 +349,11 @@
       <p class="chapter-body"><span class="reveal-target">Every surface you will touch has been finished by a craftsperson whose name is documented in your vehicle&rsquo;s provenance record. Not a marketing footnote. A fact of manufacture.</span></p>
     </div>
     <div class="chapter-image-pair">
-      <div class="image-clip image-clip--portrait">
-        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=900&amp;q=85" alt="Hand-stitched leather" loading="lazy" />
+      <div class="image-clip image-clip--portrait" data-reveal-image>
+        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=900&amp;q=85" alt="Hand-stitched leather" loading="lazy" data-parallax-img />
       </div>
-      <div class="image-clip image-clip--landscape">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900&amp;q=85" alt="Workshop atelier" loading="lazy" />
+      <div class="image-clip image-clip--landscape" data-reveal-image>
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900&amp;q=85" alt="Workshop atelier" loading="lazy" data-parallax-img />
       </div>
     </div>
   </div>
@@ -355,8 +364,8 @@
 <section class="chapter chapter--light" id="ch03">
   <div class="chapter-grid">
     <div class="chapter-image">
-      <div class="image-clip">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1400&amp;q=85" alt="Vehicle in motion" loading="lazy" />
+      <div class="image-clip" data-reveal-image>
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1400&amp;q=85" alt="Vehicle in motion" loading="lazy" data-parallax-img />
       </div>
       <span class="mono micro img-tag">PLATE 03 &middot; DYNAMICS</span>
     </div>
@@ -379,11 +388,11 @@
       <p class="chapter-body"><span class="reveal-target">Untreated leathers. Machined metals. Natural fibres. Nothing synthetic. Nothing that will look worse in five years than it does today.</span></p>
     </div>
     <div class="chapter-image-pair">
-      <div class="image-clip image-clip--portrait">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&amp;q=85" alt="Material detail" loading="lazy" />
+      <div class="image-clip image-clip--portrait" data-reveal-image>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&amp;q=85" alt="Material detail" loading="lazy" data-parallax-img />
       </div>
-      <div class="image-clip image-clip--landscape">
-        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=900&amp;q=85" alt="Cabin interior surfaces" loading="lazy" />
+      <div class="image-clip image-clip--landscape" data-reveal-image>
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=900&amp;q=85" alt="Cabin interior surfaces" loading="lazy" data-parallax-img />
       </div>
     </div>
   </div>
@@ -404,9 +413,9 @@
     <h2 class="spotlight-name">AETHER S1</h2>
     <p class="spotlight-tag italic">Cd 0.20 &middot; Built to disappear from view, present in feel.</p>
     <ul class="spotlight-stats">
-      <li><span class="mono micro">0&ndash;100</span><span>2.8&thinsp;s</span></li>
-      <li><span class="mono micro">Range</span><span>687&thinsp;km</span></li>
-      <li><span class="mono micro">Beginning at</span><span>&#8377;2.40&thinsp;Cr</span></li>
+      <li><span class="mono micro">0&ndash;100</span><span data-counter="2.8" data-counter-decimals="1" data-counter-suffix="&thinsp;s">2.8&thinsp;s</span></li>
+      <li><span class="mono micro">Range</span><span data-counter="687" data-counter-suffix="&thinsp;km">687&thinsp;km</span></li>
+      <li><span class="mono micro">Beginning at</span><span data-counter="2.40" data-counter-decimals="2" data-counter-prefix="&#8377;" data-counter-suffix="&thinsp;Cr">&#8377;2.40&thinsp;Cr</span></li>
     </ul>
     <div class="spotlight-cta">
       <button type="button" class="btn btn--ivory" data-magnetic data-open-contact>
@@ -481,6 +490,33 @@
 </section>
 
 
+<!-- KINETIC MARQUEE — brand affirmation between Atelier and Modes -->
+<section class="marquee" aria-label="Aether Drive brand statement">
+  <div class="marquee-row">
+    <div class="marquee-content">
+      <span class="m-item">Aether Drive</span>
+      <span class="m-dot" aria-hidden="true"></span>
+      <span class="m-item italic">Beyond Conditions</span>
+      <span class="m-dot" aria-hidden="true"></span>
+      <span class="m-item">Atelier MMXXVI</span>
+      <span class="m-dot" aria-hidden="true"></span>
+      <span class="m-item italic">Engineered at the Edge of Perception</span>
+      <span class="m-dot" aria-hidden="true"></span>
+    </div>
+    <div class="marquee-content" aria-hidden="true">
+      <span class="m-item">Aether Drive</span>
+      <span class="m-dot"></span>
+      <span class="m-item italic">Beyond Conditions</span>
+      <span class="m-dot"></span>
+      <span class="m-item">Atelier MMXXVI</span>
+      <span class="m-dot"></span>
+      <span class="m-item italic">Engineered at the Edge of Perception</span>
+      <span class="m-dot"></span>
+    </div>
+  </div>
+</section>
+
+
 <!-- PERSONALIZATION MODES -->
 <section class="modes" id="modes">
   <div class="modes-grid">
@@ -549,8 +585,8 @@
 
   <div class="fleet-grid">
 
-    <article class="fleet-card" data-model="s1" data-body="grand-tourer" data-drivetrain="awd" data-price="240" data-availability="immediate">
-      <div class="fleet-image">
+    <article class="fleet-card" data-model="s1" data-body="grand-tourer" data-drivetrain="awd" data-price="240" data-availability="immediate" data-tilt="soft">
+      <div class="fleet-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&amp;q=85" alt="Aether S1" loading="lazy" />
         <span class="fleet-status fleet-status--green"><i></i>Immediate Delivery</span>
       </div>
@@ -572,8 +608,8 @@
       </div>
     </article>
 
-    <article class="fleet-card" data-model="r3" data-body="saloon" data-drivetrain="rwd" data-price="315" data-availability="allocated">
-      <div class="fleet-image">
+    <article class="fleet-card" data-model="r3" data-body="saloon" data-drivetrain="rwd" data-price="315" data-availability="allocated" data-tilt="soft">
+      <div class="fleet-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1200&amp;q=85" alt="Aether R3" loading="lazy" />
         <span class="fleet-status fleet-status--amber"><i></i>6 Allocations</span>
       </div>
@@ -595,8 +631,8 @@
       </div>
     </article>
 
-    <article class="fleet-card" data-model="e7" data-body="suv" data-drivetrain="awd" data-price="480" data-availability="allocated">
-      <div class="fleet-image">
+    <article class="fleet-card" data-model="e7" data-body="suv" data-drivetrain="awd" data-price="480" data-availability="allocated" data-tilt="soft">
+      <div class="fleet-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&amp;q=85" alt="Aether E7" loading="lazy" />
         <span class="fleet-status"><i></i>Configure to Order</span>
       </div>
@@ -618,8 +654,8 @@
       </div>
     </article>
 
-    <article class="fleet-card" data-model="a0" data-body="coupe" data-drivetrain="fwd" data-price="165" data-availability="waitlist">
-      <div class="fleet-image">
+    <article class="fleet-card" data-model="a0" data-body="coupe" data-drivetrain="fwd" data-price="165" data-availability="waitlist" data-tilt="soft">
+      <div class="fleet-image" data-reveal-image>
         <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&amp;q=85" alt="Aether A0" loading="lazy" />
         <span class="fleet-status"><i></i>Waitlist Open</span>
       </div>
@@ -790,6 +826,8 @@
   </aside>
 </div>
 
-<script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="main.js" defer></script>
 </body>
 </html>
