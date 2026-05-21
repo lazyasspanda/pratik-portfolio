@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="AETHER DRIVE — Engineered at the edge of perception. An ultra-premium automotive brand experience." />
+<meta name="theme-color" content="#0A0A0F" />
 <title>AETHER DRIVE — Engineered at the edge of perception</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,14 +26,15 @@
       <span class="logo-mark logo-mark--thin">DRIVE</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
+      <a href="#showcase" class="nav-link"><span>Showcase</span></a>
       <a href="#fleet" class="nav-link"><span>Fleet</span></a>
+      <a href="#features" class="nav-link"><span>Features</span></a>
       <a href="#story" class="nav-link"><span>Story</span></a>
       <a href="#atelier" class="nav-link"><span>Atelier</span></a>
-      <a href="#reserve" class="nav-link"><span>Reserve</span></a>
     </nav>
-    <a href="#reserve" class="nav-cta" data-magnetic>
-      <span class="magnetic-label">Begin</span>
-    </a>
+    <button type="button" class="nav-cta" data-magnetic data-open-contact>
+      <span class="magnetic-label">Speak with Atelier</span>
+    </button>
     <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span>
     </button>
@@ -42,44 +44,144 @@
 <!-- Mobile overlay -->
 <div class="nav-overlay" id="navOverlay" aria-hidden="true">
   <ul class="nav-overlay-links">
+    <li><a href="#showcase" class="ovl-link">Showcase</a></li>
     <li><a href="#fleet" class="ovl-link">Fleet</a></li>
+    <li><a href="#features" class="ovl-link">Features</a></li>
     <li><a href="#story" class="ovl-link">Story</a></li>
     <li><a href="#atelier" class="ovl-link">Atelier</a></li>
-    <li><a href="#reserve" class="ovl-link">Reserve</a></li>
   </ul>
   <div class="nav-overlay-foot">
-    <span class="mono micro">AETHER DRIVE · PRIVATE CLIENT</span>
+    <button type="button" class="btn btn--small" data-open-contact>
+      <span class="magnetic-label">Speak with Atelier</span>
+    </button>
+    <span class="mono micro" style="margin-top:18px;display:block;text-align:center;">AETHER DRIVE &middot; PRIVATE CLIENT</span>
   </div>
 </div>
 
 
-
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-bg">
+  <!-- Reveal lens stage: two stacked environments, summer revealed under a circular cursor lens -->
+  <div class="hero-stage" id="heroStage">
     <div class="hero-grad"></div>
-    <div class="hero-image-wrap">
-      <img class="hero-image" src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=2400&q=90" alt="Aether Drive vehicle in profile" loading="eager" />
+
+    <!-- Base (harsh winter) -->
+    <div class="lens-layer lens-layer--base">
+      <img class="lens-bg" src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=2400&amp;q=85" alt="Vehicle in harsh winter terrain" loading="eager"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=2400&amp;q=85'" />
+      <div class="lens-veil lens-veil--cold"></div>
+      <img class="lens-vehicle" src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1800&amp;q=90" alt="" aria-hidden="true"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?w=1800&amp;q=90'" />
+      <span class="lens-tag lens-tag--cold mono micro">&minus;28&deg;C &middot; ALPINE PASS</span>
     </div>
+
+    <!-- Reveal (summer) -->
+    <div class="lens-layer lens-layer--reveal" id="lensReveal">
+      <img class="lens-bg" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=2400&amp;q=85" alt="Vehicle in summer landscape" loading="eager"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=2400&amp;q=85'" />
+      <div class="lens-veil lens-veil--warm"></div>
+      <img class="lens-vehicle" src="https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?w=1800&amp;q=90" alt="" aria-hidden="true"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1800&amp;q=90'" />
+      <span class="lens-tag lens-tag--warm mono micro">+34&deg;C &middot; HIGH PLATEAU</span>
+    </div>
+
+    <!-- Cinematic darkening edge -->
+    <div class="hero-vignette"></div>
   </div>
+
+  <!-- Lens cursor (sibling of stage so it floats above content) -->
+  <div class="lens-cursor" id="lensCursor" aria-hidden="true">
+    <span class="lens-ring"></span>
+    <span class="lens-pulse"></span>
+    <span class="lens-cursor-hint mono micro">Hold &amp; move</span>
+  </div>
+
+  <!-- Hero copy -->
   <div class="hero-content">
-    <p class="micro mono hero-eyebrow"><span class="reveal-target">AETHER DRIVE</span></p>
-    <h1 class="hero-headline">
-      <span class="hl-line hl-line--italic">Not merely</span>
-      <span class="hl-line hl-line--regular">engineered.</span>
-      <span class="hl-line hl-line--platinum">Perceived.</span>
-    </h1>
-    <p class="hero-body"><span class="reveal-target">The first automobile born from the language of material science and cinematic design.</span></p>
-    <div class="hero-cta">
-      <a href="#story" class="btn btn--magnetic" data-magnetic>
-        <span class="magnetic-label">Explore the Drive</span>
-      </a>
-      <a href="#fleet" class="ghost-link">Skip to Fleet <span class="arrow">&rarr;</span></a>
+    <div class="hero-content-inner">
+      <p class="micro mono hero-eyebrow"><span class="reveal-target">AETHER DRIVE &middot; SEASONAL ATELIER</span></p>
+      <h1 class="hero-headline">
+        <span class="hl-line hl-line--italic">Built for every</span>
+        <span class="hl-line hl-line--regular">condition.</span>
+        <span class="hl-line hl-line--platinum">Perceived in any.</span>
+      </h1>
+      <p class="hero-body">
+        <span class="reveal-target">Reveal the same machine across two climates. Drag the lens to feel how the AETHER S1 transforms a season &mdash; without changing a single line.</span>
+      </p>
+      <div class="hero-cta">
+        <a href="#showcase" class="btn btn--magnetic" data-magnetic>
+          <span class="magnetic-label">Explore the Drive</span>
+        </a>
+        <a href="#fleet" class="ghost-link">Skip to Fleet <span class="arrow">&rarr;</span></a>
+      </div>
     </div>
   </div>
+
+  <!-- Premium inventory search panel -->
+  <form class="hero-search" id="heroSearch" autocomplete="off" novalidate>
+    <p class="mono micro hs-eyebrow"><span class="reveal-target">Inventory Atelier &middot; Live</span></p>
+    <div class="hs-row">
+      <label class="hs-field">
+        <span class="hs-label">Model</span>
+        <select name="model" class="hs-select" data-search>
+          <option value="">All models</option>
+          <option value="s1">Aether S1</option>
+          <option value="r3">Aether R3</option>
+          <option value="e7">Aether E7</option>
+          <option value="a0">Aether A0</option>
+        </select>
+        <span class="hs-caret" aria-hidden="true">&#x2304;</span>
+      </label>
+
+      <label class="hs-field">
+        <span class="hs-label">Body</span>
+        <select name="body" class="hs-select" data-search>
+          <option value="">Any silhouette</option>
+          <option value="grand-tourer">Grand Tourer</option>
+          <option value="saloon">Performance Saloon</option>
+          <option value="suv">Executive SUV</option>
+          <option value="coupe">Urban Coupe</option>
+        </select>
+        <span class="hs-caret" aria-hidden="true">&#x2304;</span>
+      </label>
+
+      <label class="hs-field">
+        <span class="hs-label">Drivetrain</span>
+        <select name="drivetrain" class="hs-select" data-search>
+          <option value="">All drivetrains</option>
+          <option value="awd">All-Wheel</option>
+          <option value="rwd">Rear-Wheel</option>
+          <option value="fwd">Front-Wheel</option>
+        </select>
+        <span class="hs-caret" aria-hidden="true">&#x2304;</span>
+      </label>
+
+      <div class="hs-field hs-field--range">
+        <span class="hs-label">Allocation up to <em id="hsPriceLabel">&#8377;5.00 Cr</em></span>
+        <input type="range" min="150" max="500" step="5" value="500" class="hs-range" name="price" data-search />
+        <span class="hs-range-track" aria-hidden="true"><span class="hs-range-fill" id="hsPriceFill"></span></span>
+      </div>
+
+      <div class="hs-field hs-field--toggles">
+        <span class="hs-label">Availability</span>
+        <div class="hs-toggles" role="group">
+          <button type="button" class="hs-toggle is-active" data-avail="immediate" data-search>Immediate</button>
+          <button type="button" class="hs-toggle is-active" data-avail="allocated" data-search>Allocated</button>
+          <button type="button" class="hs-toggle is-active" data-avail="waitlist" data-search>Waitlist</button>
+        </div>
+      </div>
+
+      <button type="submit" class="hs-submit" data-magnetic-soft>
+        <span class="hs-count" id="hsCount">4</span>
+        <span class="hs-submit-label">Reveal Matches</span>
+        <span class="hs-arrow" aria-hidden="true">&rarr;</span>
+      </button>
+    </div>
+  </form>
+
   <div class="hero-meta">
-    <span class="mono micro">N 28&deg;36' · E 77&deg;13'</span>
-    <span class="mono micro">2026 · MMXXVI</span>
+    <span class="mono micro">N 28&deg;36' &middot; E 77&deg;13'</span>
+    <span class="mono micro">2026 &middot; MMXXVI</span>
   </div>
   <div class="hero-bottom-line"><span class="line-grow"></span></div>
   <div class="hero-scroll-cue mono micro">
@@ -87,6 +189,72 @@
     <span class="cue-line"></span>
   </div>
 </section>
+
+
+<!-- VEHICLE SHOWCASE (LIGHT) -->
+<section class="showcase showcase--light" id="showcase">
+  <div class="showcase-bg" aria-hidden="true">
+    <span class="showcase-grain"></span>
+  </div>
+  <div class="showcase-head">
+    <p class="mono micro"><span class="reveal-target">Section 01 &middot; Showcase</span></p>
+    <h2 class="section-headline split-text">A vehicle deserves a room of its own.</h2>
+  </div>
+  <div class="showcase-stage" data-tilt-stage>
+    <div class="showcase-canvas">
+      <div class="showcase-frame" data-parallax-card>
+        <div class="showcase-image">
+          <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=2200&amp;q=90" alt="Aether S1 — primary showcase" loading="lazy"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=2200&amp;q=90'" />
+        </div>
+        <span class="showcase-frame-tag mono micro">PLATE 01 &middot; AETHER S1</span>
+      </div>
+      <div class="showcase-meta" data-parallax-card data-parallax-depth="0.3">
+        <p class="mono micro showcase-spec">2.8&thinsp;s &middot; 0&ndash;100</p>
+        <p class="mono micro showcase-spec">687&thinsp;km &middot; WLTP</p>
+      </div>
+      <div class="showcase-quote" data-parallax-card data-parallax-depth="0.18">
+        <p class="italic">&ldquo;The first car you stop watching and start feeling.&rdquo;</p>
+        <p class="mono micro">&mdash; Atelier Notes, Vol. III</p>
+      </div>
+      <span class="showcase-numeral" aria-hidden="true">S1</span>
+    </div>
+  </div>
+
+  <div class="showcase-rail">
+    <article class="showcase-rail-card" data-parallax-card>
+      <div class="showcase-rail-image">
+        <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1200&amp;q=90" alt="Aether R3 silhouette" loading="lazy" />
+      </div>
+      <div class="showcase-rail-meta">
+        <p class="mono micro">02 &middot; PERFORMANCE SALOON</p>
+        <h3>Aether R3</h3>
+        <p class="showcase-rail-line">Restraint, expressed in motion.</p>
+      </div>
+    </article>
+    <article class="showcase-rail-card" data-parallax-card>
+      <div class="showcase-rail-image">
+        <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&amp;q=90" alt="Aether E7 cabin" loading="lazy" />
+      </div>
+      <div class="showcase-rail-meta">
+        <p class="mono micro">03 &middot; EXECUTIVE SUV</p>
+        <h3>Aether E7</h3>
+        <p class="showcase-rail-line">Space that doesn&rsquo;t announce itself.</p>
+      </div>
+    </article>
+    <article class="showcase-rail-card" data-parallax-card>
+      <div class="showcase-rail-image">
+        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&amp;q=90" alt="Aether A0 city coupe" loading="lazy" />
+      </div>
+      <div class="showcase-rail-meta">
+        <p class="mono micro">04 &middot; URBAN COUPE</p>
+        <h3>Aether A0</h3>
+        <p class="showcase-rail-line">The city, reconsidered.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
 
 <!-- STORY -->
 <main id="story">
@@ -96,16 +264,91 @@
   <div class="chapter-grid">
     <div class="chapter-image">
       <div class="image-clip">
-        <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1600&q=90" alt="Vehicle exterior detail" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1600&amp;q=90" alt="Vehicle exterior detail" loading="lazy" />
       </div>
-      <span class="mono micro img-tag">PLATE 01 · EXTERIOR</span>
+      <span class="mono micro img-tag">PLATE 02 &middot; PRESENCE</span>
     </div>
     <div class="chapter-text">
       <p class="mono micro chapter-label"><span class="reveal-target">Chapter 01 / Presence</span></p>
       <h2 class="chapter-headline split-text">A room changes when it enters.</h2>
       <p class="chapter-body"><span class="reveal-target">Aether Drive vehicles are not designed to be looked at. They are designed to be felt &mdash; as a shift in atmospheric pressure when they arrive. This is not an aesthetic claim. It is an engineering requirement.</span></p>
-      <a href="#" class="ghost-link">On Presence <span class="arrow">&rarr;</span></a>
+      <a href="#features" class="ghost-link">On Presence <span class="arrow">&rarr;</span></a>
     </div>
+  </div>
+</section>
+
+
+<!-- FEATURE STORYTELLING (LIGHT, asymmetric) -->
+<section class="features features--light" id="features">
+  <div class="features-head">
+    <p class="mono micro"><span class="reveal-target">Section 02 &middot; Feature Storytelling</span></p>
+    <h2 class="section-headline split-text">Five disciplines. One unbroken object.</h2>
+    <p class="features-lead"><span class="reveal-target">Each Aether is the answer to a different question, asked in five rooms across the atelier &mdash; then assembled by a single hand.</span></p>
+  </div>
+
+  <div class="features-grid">
+    <article class="feat feat--01" data-parallax-card data-parallax-depth="0.22">
+      <span class="feat-num mono micro">01</span>
+      <div class="feat-image">
+        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1400&amp;q=90" alt="Hand-stitched leather" loading="lazy" />
+      </div>
+      <div class="feat-meta">
+        <h3 class="feat-title">Craftsmanship</h3>
+        <p>700 documented hours. Every stitch named. Every grain numbered.</p>
+      </div>
+    </article>
+
+    <article class="feat feat--02" data-parallax-card data-parallax-depth="0.4">
+      <span class="feat-num mono micro">02</span>
+      <div class="feat-image">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1400&amp;q=90" alt="Vehicle in motion" loading="lazy" />
+      </div>
+      <div class="feat-meta">
+        <h3 class="feat-title">Capability</h3>
+        <p>From frozen passes to summer plateaus &mdash; same machine, no compromise.</p>
+      </div>
+    </article>
+
+    <article class="feat feat--03" data-parallax-card data-parallax-depth="0.16">
+      <span class="feat-num mono micro">03</span>
+      <div class="feat-image">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&amp;q=90" alt="Material study" loading="lazy" />
+      </div>
+      <div class="feat-meta">
+        <h3 class="feat-title">Performance</h3>
+        <p>820&thinsp;Nm of effortful authority &mdash; calibrated for control, not theatre.</p>
+      </div>
+    </article>
+
+    <article class="feat feat--04" data-parallax-card data-parallax-depth="0.32">
+      <span class="feat-num mono micro">04</span>
+      <div class="feat-image">
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1400&amp;q=90" alt="Cabin interior" loading="lazy" />
+      </div>
+      <div class="feat-meta">
+        <h3 class="feat-title">Comfort</h3>
+        <p>28&thinsp;dB cabin at 130&thinsp;km/h. Silence treated as a design material.</p>
+      </div>
+    </article>
+
+    <article class="feat feat--05" data-parallax-card data-parallax-depth="0.24">
+      <span class="feat-num mono micro">05</span>
+      <div class="feat-image">
+        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=1400&amp;q=90" alt="Sustainable materials" loading="lazy" />
+      </div>
+      <div class="feat-meta">
+        <h3 class="feat-title">Technology</h3>
+        <p>Haptic surfaces. 23-speaker tuning. Software that disappears, by design.</p>
+      </div>
+    </article>
+
+    <aside class="feat feat--cta">
+      <p class="mono micro">Beyond the brochure</p>
+      <h3 class="feat-cta-title">Visit the atelier in person.</h3>
+      <button type="button" class="btn btn--small btn--ink" data-open-contact>
+        <span class="magnetic-label">Request a Visit</span>
+      </button>
+    </aside>
   </div>
 </section>
 
@@ -117,33 +360,33 @@
     <div class="chapter-text chapter-text--b">
       <p class="mono micro chapter-label"><span class="reveal-target">Chapter 02 / Craftsmanship</span></p>
       <h2 class="chapter-headline split-text">Seven hundred hours of human attention.</h2>
-      <p class="chapter-body"><span class="reveal-target">Every surface you will touch has been finished by a craftsperson whose name is documented in your vehicle's provenance record. Not as a marketing footnote. As a fact of manufacture.</span></p>
+      <p class="chapter-body"><span class="reveal-target">Every surface you will touch has been finished by a craftsperson whose name is documented in your vehicle&rsquo;s provenance record. Not as a marketing footnote. As a fact of manufacture.</span></p>
     </div>
     <div class="chapter-image-pair">
       <div class="image-clip image-clip--portrait">
-        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=90" alt="Hand-stitched leather interior" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&amp;q=90" alt="Hand-stitched leather interior" loading="lazy" />
       </div>
       <div class="image-clip image-clip--landscape">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=90" alt="Workshop atelier" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&amp;q=90" alt="Workshop atelier" loading="lazy" />
       </div>
     </div>
   </div>
 </section>
 
-<!-- CHAPTER 03 -->
+<!-- CHAPTER 03 (LIGHT) -->
 <section class="chapter chapter--a chapter--light" id="ch03">
   <div class="chapter-grid chapter-grid--reverse">
     <div class="chapter-image">
       <div class="image-clip">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=90" alt="Vehicle in motion" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&amp;q=90" alt="Vehicle in motion" loading="lazy" />
       </div>
-      <span class="mono micro img-tag">PLATE 03 · DYNAMICS</span>
+      <span class="mono micro img-tag">PLATE 03 &middot; DYNAMICS</span>
     </div>
     <div class="chapter-text">
       <p class="mono micro chapter-label"><span class="reveal-target">Chapter 03 / Performance</span></p>
       <h2 class="chapter-headline split-text">Power is not the point.</h2>
       <p class="chapter-sub italic"><span class="reveal-target">Control is.</span></p>
-      <p class="chapter-body"><span class="reveal-target">Peak output figures are a brochure metric. Aether Drive vehicles are calibrated for a different sensation &mdash; the feeling that the car responds before you've decided to move.</span></p>
+      <p class="chapter-body"><span class="reveal-target">Peak output figures are a brochure metric. Aether Drive vehicles are calibrated for a different sensation &mdash; the feeling that the car responds before you&rsquo;ve decided to move.</span></p>
     </div>
   </div>
 </section>
@@ -154,10 +397,10 @@
   <div class="chapter-grid-b chapter-grid-b--reverse">
     <div class="chapter-image-pair chapter-image-pair--reverse">
       <div class="image-clip image-clip--portrait">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=90" alt="Material detail" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&amp;q=90" alt="Material detail" loading="lazy" />
       </div>
       <div class="image-clip image-clip--landscape">
-        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=90" alt="Cabin interior surfaces" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&amp;q=90" alt="Cabin interior surfaces" loading="lazy" />
       </div>
     </div>
     <div class="chapter-text chapter-text--b">
@@ -168,23 +411,22 @@
   </div>
 </section>
 
-
-<!-- CHAPTER 05 -->
-<section class="chapter chapter--a chapter--dark" id="ch05">
+<!-- CHAPTER 05 (LIGHT) -->
+<section class="chapter chapter--a chapter--light" id="ch05">
   <div class="chapter-grid">
     <div class="chapter-image">
       <div class="image-clip">
-        <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1600&q=90" alt="Owner relationship" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1600&amp;q=90" alt="Owner relationship" loading="lazy" />
       </div>
-      <span class="mono micro img-tag">PLATE 05 · OWNERSHIP</span>
+      <span class="mono micro img-tag">PLATE 05 &middot; OWNERSHIP</span>
     </div>
     <div class="chapter-text">
       <p class="mono micro chapter-label"><span class="reveal-target">Chapter 05 / Ownership</span></p>
       <h2 class="chapter-headline split-text">The relationship begins at delivery.</h2>
       <p class="chapter-body"><span class="reveal-target">Your Aether Drive client director is available indefinitely. Not for a warranty period. Not for a subscription fee. Indefinitely.</span></p>
-      <a href="#reserve" class="btn btn--magnetic btn--small" data-magnetic>
+      <button type="button" class="btn btn--small btn--ink" data-open-contact>
         <span class="magnetic-label">Begin a Conversation</span>
-      </a>
+      </button>
     </div>
   </div>
 </section>
@@ -216,7 +458,7 @@
         <button class="spec-tile" type="button">
           <span class="mono micro spec-key">Wheelbase</span>
           <span class="spec-val">2,930<span class="spec-unit">mm</span></span>
-          <span class="spec-desc">Long enough for cabin presence. Short enough to remain a driver's instrument.</span>
+          <span class="spec-desc">Long enough for cabin presence. Short enough to remain a driver&rsquo;s instrument.</span>
         </button>
         <button class="spec-tile" type="button">
           <span class="mono micro spec-key">WLTP Range</span>
@@ -232,7 +474,7 @@
       <div class="editorial-block">
         <div class="editorial-image">
           <div class="image-clip">
-            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=90" alt="Material study" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&amp;q=90" alt="Material study" loading="lazy" />
           </div>
         </div>
         <div class="editorial-text">
@@ -247,9 +489,9 @@
 
 
     <!-- Module C: Immersive CTA -->
-    <a href="#reserve" class="module module--c immersive-cta" data-magnetic-soft>
+    <button type="button" class="module module--c immersive-cta" data-open-contact data-magnetic-soft>
       <div class="immersive-bg">
-        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1600&q=90" alt="Reserve a position" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1600&amp;q=90" alt="Reserve a position" loading="lazy" />
       </div>
       <div class="immersive-content">
         <p class="mono micro"><span class="reveal-target">Module C / Reservation</span></p>
@@ -257,7 +499,7 @@
         <p class="mono micro immersive-note"><span class="reveal-target">12 allocations remaining for this configuration.</span></p>
       </div>
       <span class="immersive-border" aria-hidden="true"></span>
-    </a>
+    </button>
 
   </div>
 </section>
@@ -280,7 +522,7 @@
       <!-- Panel 2 Exterior -->
       <div class="panel panel--exterior" data-panel="1">
         <div class="panel-image">
-          <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1600&q=90" alt="Exterior profile" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1600&amp;q=90" alt="Exterior profile" loading="lazy" />
         </div>
         <div class="panel-overlay panel-overlay--dim"></div>
         <p class="mono micro panel-stat panel-stat--tr">Cd 0.20</p>
@@ -291,7 +533,7 @@
       <!-- Panel 3 Interior -->
       <div class="panel panel--interior" data-panel="2">
         <div class="panel-image">
-          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&q=90" alt="Cabin interior" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&amp;q=90" alt="Cabin interior" loading="lazy" />
         </div>
         <div class="panel-overlay panel-overlay--dim"></div>
         <p class="panel-text panel-text--br">Twelve hundred components. Every one accessible to human fingers, by design.</p>
@@ -305,10 +547,10 @@
         <div class="panel-invitation-content">
           <p class="mono micro panel-eyebrow">Beginning at</p>
           <p class="invitation-price">&#8377;2.40 Cr</p>
-          <a href="#reserve" class="btn btn--magnetic" data-magnetic>
+          <button type="button" class="btn btn--magnetic" data-magnetic data-open-contact>
             <span class="magnetic-label">Request a Private Viewing</span>
-          </a>
-          <a href="#" class="ghost-link">Or explore full specifications <span class="arrow">&rarr;</span></a>
+          </button>
+          <a href="#fleet" class="ghost-link">Or explore full specifications <span class="arrow">&rarr;</span></a>
         </div>
       </div>
 
@@ -329,10 +571,10 @@
 <section class="modes" id="modes">
   <div class="modes-grid">
     <div class="modes-image">
-      <img class="mode-img is-active" data-mode-img="performance" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=90" alt="Performance mode" loading="lazy" />
-      <img class="mode-img" data-mode-img="luxury" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&q=90" alt="Luxury mode" loading="lazy" />
-      <img class="mode-img" data-mode-img="comfort" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=90" alt="Comfort mode" loading="lazy" />
-      <img class="mode-img" data-mode-img="sustainability" src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=1600&q=90" alt="Sustainability mode" loading="lazy" />
+      <img class="mode-img is-active" data-mode-img="performance" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&amp;q=90" alt="Performance mode" loading="lazy" />
+      <img class="mode-img" data-mode-img="luxury" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&amp;q=90" alt="Luxury mode" loading="lazy" />
+      <img class="mode-img" data-mode-img="comfort" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&amp;q=90" alt="Comfort mode" loading="lazy" />
+      <img class="mode-img" data-mode-img="sustainability" src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=1600&amp;q=90" alt="Sustainability mode" loading="lazy" />
     </div>
     <div class="modes-panel">
       <p class="mono micro modes-eyebrow"><span class="reveal-target">Section 05 / Personalization</span></p>
@@ -380,8 +622,8 @@
   </div>
 </section>
 
-<!-- MOTION SHOWCASE -->
-<section class="motion" id="motion">
+<!-- MOTION SHOWCASE (LIGHT) -->
+<section class="motion motion--light" id="motion">
   <div class="section-head">
     <p class="mono micro"><span class="reveal-target">Section 06 / Motion System</span></p>
     <h2 class="section-headline split-text">A vocabulary of movement.</h2>
@@ -461,9 +703,9 @@
   <div class="inventory-track-wrap" id="inventoryWrap">
     <div class="inventory-track" id="inventoryTrack">
 
-      <article class="inv-card">
+      <article class="inv-card" data-model="s1" data-body="grand-tourer" data-drivetrain="awd" data-price="240" data-availability="immediate">
         <div class="inv-image">
-          <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=90" alt="Aether S1" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&amp;q=90" alt="Aether S1" loading="lazy" />
         </div>
         <div class="inv-meta">
           <div class="inv-row inv-row--top">
@@ -471,7 +713,7 @@
             <p class="mono micro">2026</p>
           </div>
           <h3 class="inv-name">Aether S1</h3>
-          <p class="inv-tagline italic">"The first car you stop watching and start feeling."</p>
+          <p class="inv-tagline italic">&ldquo;The first car you stop watching and start feeling.&rdquo;</p>
           <div class="inv-specs">
             <div><span class="mono micro">0&ndash;100</span><span>2.8 s</span></div>
             <div><span class="mono micro">Range</span><span>687 km</span></div>
@@ -479,16 +721,16 @@
           </div>
           <div class="inv-row inv-row--foot">
             <p class="mono micro inv-status inv-status--green">&middot; Immediate Delivery</p>
-            <a href="#reserve" class="btn btn--magnetic btn--ghostline" data-magnetic>
+            <button type="button" class="btn btn--magnetic btn--ghostline" data-magnetic data-open-contact>
               <span class="magnetic-label">View Configuration</span>
-            </a>
+            </button>
           </div>
         </div>
       </article>
 
-      <article class="inv-card">
+      <article class="inv-card" data-model="r3" data-body="saloon" data-drivetrain="rwd" data-price="315" data-availability="allocated">
         <div class="inv-image">
-          <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1200&q=90" alt="Aether R3" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1200&amp;q=90" alt="Aether R3" loading="lazy" />
         </div>
         <div class="inv-meta">
           <div class="inv-row inv-row--top">
@@ -496,7 +738,7 @@
             <p class="mono micro">2026</p>
           </div>
           <h3 class="inv-name">Aether R3</h3>
-          <p class="inv-tagline italic">"Performance as a form of restraint."</p>
+          <p class="inv-tagline italic">&ldquo;Performance as a form of restraint.&rdquo;</p>
           <div class="inv-specs">
             <div><span class="mono micro">0&ndash;100</span><span>2.4 s</span></div>
             <div><span class="mono micro">Peak</span><span>820 bhp</span></div>
@@ -504,16 +746,16 @@
           </div>
           <div class="inv-row inv-row--foot">
             <p class="mono micro inv-status inv-status--amber">&middot; 6 Allocations Remaining</p>
-            <a href="#reserve" class="btn btn--magnetic btn--ghostline" data-magnetic>
+            <button type="button" class="btn btn--magnetic btn--ghostline" data-magnetic data-open-contact>
               <span class="magnetic-label">View Configuration</span>
-            </a>
+            </button>
           </div>
         </div>
       </article>
 
-      <article class="inv-card">
+      <article class="inv-card" data-model="e7" data-body="suv" data-drivetrain="awd" data-price="480" data-availability="allocated">
         <div class="inv-image">
-          <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&q=90" alt="Aether E7" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&amp;q=90" alt="Aether E7" loading="lazy" />
         </div>
         <div class="inv-meta">
           <div class="inv-row inv-row--top">
@@ -521,7 +763,7 @@
             <p class="mono micro">2026</p>
           </div>
           <h3 class="inv-name">Aether E7</h3>
-          <p class="inv-tagline italic">"Space that doesn't announce itself."</p>
+          <p class="inv-tagline italic">&ldquo;Space that doesn&rsquo;t announce itself.&rdquo;</p>
           <div class="inv-specs">
             <div><span class="mono micro">Seating</span><span>5+2</span></div>
             <div><span class="mono micro">Cargo</span><span>780 L</span></div>
@@ -529,16 +771,16 @@
           </div>
           <div class="inv-row inv-row--foot">
             <p class="mono micro inv-status">&middot; Configure to Order</p>
-            <a href="#reserve" class="btn btn--magnetic btn--ghostline" data-magnetic>
+            <button type="button" class="btn btn--magnetic btn--ghostline" data-magnetic data-open-contact>
               <span class="magnetic-label">View Configuration</span>
-            </a>
+            </button>
           </div>
         </div>
       </article>
 
-      <article class="inv-card">
+      <article class="inv-card" data-model="a0" data-body="coupe" data-drivetrain="fwd" data-price="165" data-availability="waitlist">
         <div class="inv-image">
-          <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=90" alt="Aether A0" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&amp;q=90" alt="Aether A0" loading="lazy" />
         </div>
         <div class="inv-meta">
           <div class="inv-row inv-row--top">
@@ -546,7 +788,7 @@
             <p class="mono micro">2026</p>
           </div>
           <h3 class="inv-name">Aether A0</h3>
-          <p class="inv-tagline italic">"The city, reconsidered."</p>
+          <p class="inv-tagline italic">&ldquo;The city, reconsidered.&rdquo;</p>
           <div class="inv-specs">
             <div><span class="mono micro">Weight</span><span>1,240 kg</span></div>
             <div><span class="mono micro">Length</span><span>4,120 mm</span></div>
@@ -554,9 +796,9 @@
           </div>
           <div class="inv-row inv-row--foot">
             <p class="mono micro inv-status">&middot; Waitlist Open</p>
-            <a href="#reserve" class="btn btn--magnetic btn--ghostline" data-magnetic>
+            <button type="button" class="btn btn--magnetic btn--ghostline" data-magnetic data-open-contact>
               <span class="magnetic-label">View Configuration</span>
-            </a>
+            </button>
           </div>
         </div>
       </article>
@@ -569,7 +811,7 @@
 <!-- FINALE -->
 <section class="finale" id="reserve">
   <div class="finale-bg">
-    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=2400&q=85" alt="" aria-hidden="true" />
+    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=2400&amp;q=85" alt="" aria-hidden="true" />
   </div>
   <div class="finale-conic" aria-hidden="true"></div>
   <div class="finale-content">
@@ -581,9 +823,9 @@
       <span class="hl-line">finds you.</span>
     </h2>
     <p class="finale-body"><span class="reveal-target">Our private client programme is by introduction. If you are reading this, someone believed you should.</span></p>
-    <a href="#" class="btn btn--magnetic btn--large" data-magnetic>
+    <button type="button" class="btn btn--magnetic btn--large" data-magnetic data-open-contact>
       <span class="magnetic-label">Request an Introduction</span>
-    </a>
+    </button>
     <p class="mono micro finale-note"><span class="reveal-target">All enquiries are handled personally.</span></p>
   </div>
 </section>
@@ -601,24 +843,24 @@
         <p class="mono micro footer-col-head">Explore</p>
         <ul>
           <li><a href="#fleet">The Fleet</a></li>
+          <li><a href="#showcase">Showcase</a></li>
+          <li><a href="#features">Features</a></li>
           <li><a href="#story">Story</a></li>
-          <li><a href="#narrative">AETHER S1</a></li>
-          <li><a href="#modes">Configurations</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <p class="mono micro footer-col-head">Atelier</p>
         <ul>
           <li><a href="#atelier">Bespoke</a></li>
-          <li><a href="#">Materials</a></li>
-          <li><a href="#">Provenance</a></li>
-          <li><a href="#">Workshop</a></li>
+          <li><a href="#modes">Configurations</a></li>
+          <li><a href="#narrative">AETHER S1</a></li>
+          <li><a href="#motion">Motion</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <p class="mono micro footer-col-head">Connect</p>
         <ul>
-          <li><a href="#reserve">Private Office</a></li>
+          <li><button type="button" class="footer-link" data-open-contact>Private Office</button></li>
           <li><a href="#">Press</a></li>
           <li><a href="#">Careers</a></li>
           <li><a href="#">Owners</a></li>
@@ -635,6 +877,87 @@
     </ul>
   </div>
 </footer>
+
+
+<!-- FLOATING MAGNETIC CONTACT CTA -->
+<button type="button" class="floating-cta" id="floatingCta" data-magnetic data-open-contact aria-label="Speak with Atelier">
+  <span class="floating-cta-pulse" aria-hidden="true"></span>
+  <span class="floating-cta-inner">
+    <span class="floating-cta-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+      </svg>
+    </span>
+    <span class="floating-cta-label magnetic-label">Speak with Atelier</span>
+  </span>
+</button>
+
+
+<!-- CONTACT DRAWER -->
+<div class="drawer" id="contactDrawer" aria-hidden="true">
+  <div class="drawer-backdrop" data-close-contact></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <div class="drawer-grad" aria-hidden="true"></div>
+    <header class="drawer-head">
+      <p class="mono micro drawer-eyebrow">Private Office &middot; Aether Drive</p>
+      <button type="button" class="drawer-close" data-close-contact aria-label="Close">
+        <span></span><span></span>
+      </button>
+    </header>
+
+    <div class="drawer-hero">
+      <h2 id="drawerTitle" class="drawer-title">
+        <span class="hl-line italic">A conversation,</span>
+        <span class="hl-line">on your terms.</span>
+      </h2>
+      <p class="drawer-lead">Reach the atelier directly. Every enquiry is read, and answered, by a member of the client team &mdash; usually within 12 hours.</p>
+    </div>
+
+    <form class="drawer-form" id="contactForm">
+      <div class="drawer-row">
+        <label class="drawer-field">
+          <span class="drawer-label">Name</span>
+          <input type="text" name="name" required />
+        </label>
+        <label class="drawer-field">
+          <span class="drawer-label">Email</span>
+          <input type="email" name="email" required />
+        </label>
+      </div>
+      <label class="drawer-field">
+        <span class="drawer-label">Interest</span>
+        <select name="interest">
+          <option>Aether S1 &mdash; Grand Tourer</option>
+          <option>Aether R3 &mdash; Performance Saloon</option>
+          <option>Aether E7 &mdash; Executive SUV</option>
+          <option>Aether A0 &mdash; Urban Coupe</option>
+          <option>Bespoke commission</option>
+          <option>Press &amp; partnerships</option>
+        </select>
+      </label>
+      <label class="drawer-field">
+        <span class="drawer-label">Message</span>
+        <textarea name="message" rows="4" placeholder="A few sentences are enough."></textarea>
+      </label>
+      <button type="submit" class="btn btn--magnetic btn--large drawer-submit" data-magnetic>
+        <span class="magnetic-label">Send to Atelier</span>
+      </button>
+      <p class="mono micro drawer-success" id="drawerSuccess" hidden>Received. A client director will be in touch.</p>
+    </form>
+
+    <footer class="drawer-foot">
+      <div>
+        <p class="mono micro">Atelier</p>
+        <p>Aerocity, New Delhi &middot; By appointment</p>
+      </div>
+      <div>
+        <p class="mono micro">Direct</p>
+        <p>+91 11 0000 0000<br/>private@aetherdrive.example</p>
+      </div>
+    </footer>
+  </aside>
+</div>
+
 
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
