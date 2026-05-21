@@ -1,645 +1,712 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="AETHER DRIVE — Engineered at the edge of perception. An ultra-premium automotive brand experience." />
-<title>AETHER DRIVE — Engineered at the edge of perception</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX MOTORS — World-Class Automotive Dealership</title>
+    <meta name="description" content="APEX MOTORS - Premium luxury and performance vehicles. BMW, Mercedes, Porsche, Audi and more.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Custom cursor -->
-<div class="cursor" aria-hidden="true">
-  <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
-</div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
-<header class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#hero" class="nav-logo" data-magnetic-soft>
-      <span class="logo-mark">AETHER</span>
-      <span class="logo-mark logo-mark--thin">DRIVE</span>
-    </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#fleet" class="nav-link"><span>Fleet</span></a>
-      <a href="#story" class="nav-link"><span>Story</span></a>
-      <a href="#atelier" class="nav-link"><span>Atelier</span></a>
-      <a href="#reserve" class="nav-link"><span>Reserve</span></a>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader__gauge">
+            <div class="loader__gauge-bg"></div>
+            <div class="loader__needle" id="loaderNeedle"></div>
+            <div class="loader__gauge-center"></div>
+            <span class="loader__text">APEX</span>
+        </div>
+        <div class="loader__top" id="loaderTop"></div>
+        <div class="loader__bottom" id="loaderBottom"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#" class="nav__logo">APEX<span class="gold">.</span></a>
+            <ul class="nav__links">
+                <li><a href="#featured">Vehicles</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#listings">Inventory</a></li>
+                <li><a href="#trade-in">Trade-In</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="nav__actions">
+                <button class="nav__contact-btn" id="contactToggle">Contact</button>
+                <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <!-- Contact Drawer -->
+        <div class="contact-drawer" id="contactDrawer">
+            <div class="contact-drawer__inner">
+                <div class="contact-drawer__col">
+                    <span class="contact-drawer__label">Phone</span>
+                    <a href="tel:+18005550199" class="contact-drawer__value">+1 (800) 555-0199</a>
+                </div>
+                <div class="contact-drawer__col">
+                    <span class="contact-drawer__label">Email</span>
+                    <a href="mailto:concierge@apexmotors.com" class="contact-drawer__value">concierge@apexmotors.com</a>
+                </div>
+                <div class="contact-drawer__col">
+                    <span class="contact-drawer__label">Location</span>
+                    <span class="contact-drawer__value">450 Motor Boulevard, Beverly Hills, CA 90210</span>
+                </div>
+            </div>
+        </div>
     </nav>
-    <a href="#reserve" class="nav-cta" data-magnetic>
-      <span class="magnetic-label">Begin</span>
-    </a>
-    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
-  </div>
-</header>
 
-<!-- Mobile overlay -->
-<div class="nav-overlay" id="navOverlay" aria-hidden="true">
-  <ul class="nav-overlay-links">
-    <li><a href="#fleet" class="ovl-link">Fleet</a></li>
-    <li><a href="#story" class="ovl-link">Story</a></li>
-    <li><a href="#atelier" class="ovl-link">Atelier</a></li>
-    <li><a href="#reserve" class="ovl-link">Reserve</a></li>
-  </ul>
-  <div class="nav-overlay-foot">
-    <span class="mono micro">AETHER DRIVE · PRIVATE CLIENT</span>
-  </div>
-</div>
-
-
-
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-bg">
-    <div class="hero-grad"></div>
-    <div class="hero-image-wrap">
-      <img class="hero-image" src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=2400&q=90" alt="Aether Drive vehicle in profile" loading="eager" />
-    </div>
-  </div>
-  <div class="hero-content">
-    <p class="micro mono hero-eyebrow"><span class="reveal-target">AETHER DRIVE</span></p>
-    <h1 class="hero-headline">
-      <span class="hl-line hl-line--italic">Not merely</span>
-      <span class="hl-line hl-line--regular">engineered.</span>
-      <span class="hl-line hl-line--platinum">Perceived.</span>
-    </h1>
-    <p class="hero-body"><span class="reveal-target">The first automobile born from the language of material science and cinematic design.</span></p>
-    <div class="hero-cta">
-      <a href="#story" class="btn btn--magnetic" data-magnetic>
-        <span class="magnetic-label">Explore the Drive</span>
-      </a>
-      <a href="#fleet" class="ghost-link">Skip to Fleet <span class="arrow">&rarr;</span></a>
-    </div>
-  </div>
-  <div class="hero-meta">
-    <span class="mono micro">N 28&deg;36' · E 77&deg;13'</span>
-    <span class="mono micro">2026 · MMXXVI</span>
-  </div>
-  <div class="hero-bottom-line"><span class="line-grow"></span></div>
-  <div class="hero-scroll-cue mono micro">
-    <span>Scroll</span>
-    <span class="cue-line"></span>
-  </div>
-</section>
-
-<!-- STORY -->
-<main id="story">
-
-<!-- CHAPTER 01 -->
-<section class="chapter chapter--a chapter--dark" id="ch01">
-  <div class="chapter-grid">
-    <div class="chapter-image">
-      <div class="image-clip">
-        <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1600&q=90" alt="Vehicle exterior detail" loading="lazy" />
-      </div>
-      <span class="mono micro img-tag">PLATE 01 · EXTERIOR</span>
-    </div>
-    <div class="chapter-text">
-      <p class="mono micro chapter-label"><span class="reveal-target">Chapter 01 / Presence</span></p>
-      <h2 class="chapter-headline split-text">A room changes when it enters.</h2>
-      <p class="chapter-body"><span class="reveal-target">Aether Drive vehicles are not designed to be looked at. They are designed to be felt &mdash; as a shift in atmospheric pressure when they arrive. This is not an aesthetic claim. It is an engineering requirement.</span></p>
-      <a href="#" class="ghost-link">On Presence <span class="arrow">&rarr;</span></a>
-    </div>
-  </div>
-</section>
-
-
-<!-- CHAPTER 02 -->
-<section class="chapter chapter--b chapter--dark" id="ch02">
-  <span class="chapter-numeral" aria-hidden="true">02</span>
-  <div class="chapter-grid-b">
-    <div class="chapter-text chapter-text--b">
-      <p class="mono micro chapter-label"><span class="reveal-target">Chapter 02 / Craftsmanship</span></p>
-      <h2 class="chapter-headline split-text">Seven hundred hours of human attention.</h2>
-      <p class="chapter-body"><span class="reveal-target">Every surface you will touch has been finished by a craftsperson whose name is documented in your vehicle's provenance record. Not as a marketing footnote. As a fact of manufacture.</span></p>
-    </div>
-    <div class="chapter-image-pair">
-      <div class="image-clip image-clip--portrait">
-        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=90" alt="Hand-stitched leather interior" loading="lazy" />
-      </div>
-      <div class="image-clip image-clip--landscape">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=90" alt="Workshop atelier" loading="lazy" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CHAPTER 03 -->
-<section class="chapter chapter--a chapter--light" id="ch03">
-  <div class="chapter-grid chapter-grid--reverse">
-    <div class="chapter-image">
-      <div class="image-clip">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=90" alt="Vehicle in motion" loading="lazy" />
-      </div>
-      <span class="mono micro img-tag">PLATE 03 · DYNAMICS</span>
-    </div>
-    <div class="chapter-text">
-      <p class="mono micro chapter-label"><span class="reveal-target">Chapter 03 / Performance</span></p>
-      <h2 class="chapter-headline split-text">Power is not the point.</h2>
-      <p class="chapter-sub italic"><span class="reveal-target">Control is.</span></p>
-      <p class="chapter-body"><span class="reveal-target">Peak output figures are a brochure metric. Aether Drive vehicles are calibrated for a different sensation &mdash; the feeling that the car responds before you've decided to move.</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- CHAPTER 04 -->
-<section class="chapter chapter--b chapter--dark" id="ch04">
-  <span class="chapter-numeral" aria-hidden="true">04</span>
-  <div class="chapter-grid-b chapter-grid-b--reverse">
-    <div class="chapter-image-pair chapter-image-pair--reverse">
-      <div class="image-clip image-clip--portrait">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=90" alt="Material detail" loading="lazy" />
-      </div>
-      <div class="image-clip image-clip--landscape">
-        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=90" alt="Cabin interior surfaces" loading="lazy" />
-      </div>
-    </div>
-    <div class="chapter-text chapter-text--b">
-      <p class="mono micro chapter-label"><span class="reveal-target">Chapter 04 / Materiality</span></p>
-      <h2 class="chapter-headline split-text">Only materials that improve with age.</h2>
-      <p class="chapter-body"><span class="reveal-target">Untreated leathers. Machined metals. Natural fibres. Nothing synthetic. Nothing that will look worse in five years than it does today.</span></p>
-    </div>
-  </div>
-</section>
-
-
-<!-- CHAPTER 05 -->
-<section class="chapter chapter--a chapter--dark" id="ch05">
-  <div class="chapter-grid">
-    <div class="chapter-image">
-      <div class="image-clip">
-        <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1600&q=90" alt="Owner relationship" loading="lazy" />
-      </div>
-      <span class="mono micro img-tag">PLATE 05 · OWNERSHIP</span>
-    </div>
-    <div class="chapter-text">
-      <p class="mono micro chapter-label"><span class="reveal-target">Chapter 05 / Ownership</span></p>
-      <h2 class="chapter-headline split-text">The relationship begins at delivery.</h2>
-      <p class="chapter-body"><span class="reveal-target">Your Aether Drive client director is available indefinitely. Not for a warranty period. Not for a subscription fee. Indefinitely.</span></p>
-      <a href="#reserve" class="btn btn--magnetic btn--small" data-magnetic>
-        <span class="magnetic-label">Begin a Conversation</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- COMPONENT SYSTEM -->
-<section class="components" id="atelier">
-  <div class="section-head">
-    <p class="mono micro"><span class="reveal-target">Section 03 / Component System</span></p>
-    <h2 class="section-headline split-text">Specification, considered.</h2>
-  </div>
-  <div class="components-grid">
-
-    <!-- Module A: Spec tiles -->
-    <div class="module module--a">
-      <p class="mono micro module-label"><span class="reveal-target">Module A / Specification</span></p>
-      <div class="spec-tiles">
-        <button class="spec-tile" type="button">
-          <span class="mono micro spec-key">0&ndash;100 km/h</span>
-          <span class="spec-val">2.8<span class="spec-unit">s</span></span>
-          <span class="spec-desc">From standstill to one hundred &mdash; quietly. Calibrated for sensation, not theatre.</span>
-        </button>
-        <button class="spec-tile" type="button">
-          <span class="mono micro spec-key">Peak Torque</span>
-          <span class="spec-val">820<span class="spec-unit">Nm</span></span>
-          <span class="spec-desc">Delivered flat across the entire useful rev range. Effortful only when asked.</span>
-        </button>
-        <button class="spec-tile" type="button">
-          <span class="mono micro spec-key">Wheelbase</span>
-          <span class="spec-val">2,930<span class="spec-unit">mm</span></span>
-          <span class="spec-desc">Long enough for cabin presence. Short enough to remain a driver's instrument.</span>
-        </button>
-        <button class="spec-tile" type="button">
-          <span class="mono micro spec-key">WLTP Range</span>
-          <span class="spec-val">687<span class="spec-unit">km</span></span>
-          <span class="spec-desc">Real-world figures, certified. Not extrapolated from ideal conditions.</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Module B: Editorial -->
-    <div class="module module--b">
-      <p class="mono micro module-label"><span class="reveal-target">Module B / Editorial</span></p>
-      <div class="editorial-block">
-        <div class="editorial-image">
-          <div class="image-clip">
-            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=90" alt="Material study" loading="lazy" />
-          </div>
-        </div>
-        <div class="editorial-text">
-          <span class="border-grow" aria-hidden="true"></span>
-          <blockquote class="pullquote italic split-text">
-            &ldquo;Materials chosen for what they will become, not what they are.&rdquo;
-          </blockquote>
-          <p class="editorial-attribution mono micro"><span class="reveal-target">&mdash; Director of Material Sciences, Aether Atelier</span></p>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Module C: Immersive CTA -->
-    <a href="#reserve" class="module module--c immersive-cta" data-magnetic-soft>
-      <div class="immersive-bg">
-        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1600&q=90" alt="Reserve a position" loading="lazy" />
-      </div>
-      <div class="immersive-content">
-        <p class="mono micro"><span class="reveal-target">Module C / Reservation</span></p>
-        <h3 class="immersive-headline">Reserve Your Position</h3>
-        <p class="mono micro immersive-note"><span class="reveal-target">12 allocations remaining for this configuration.</span></p>
-      </div>
-      <span class="immersive-border" aria-hidden="true"></span>
-    </a>
-
-  </div>
-</section>
-
-<!-- VEHICLE NARRATIVE PINNED -->
-<section class="narrative" id="narrative">
-  <div class="narrative-outer">
-    <div class="narrative-inner">
-
-      <!-- Panel 1 Identity -->
-      <div class="panel panel--identity is-active" data-panel="0">
-        <div class="panel-grad panel-grad--dark"></div>
-        <div class="panel-identity-content">
-          <span class="silhouette-line" aria-hidden="true"></span>
-          <h2 class="aether-display">AETHER S1</h2>
-          <p class="mono micro panel-caption">The AETHER S1 &middot; 2026 Model Year</p>
-        </div>
-      </div>
-
-      <!-- Panel 2 Exterior -->
-      <div class="panel panel--exterior" data-panel="1">
-        <div class="panel-image">
-          <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1600&q=90" alt="Exterior profile" loading="lazy" />
-        </div>
-        <div class="panel-overlay panel-overlay--dim"></div>
-        <p class="mono micro panel-stat panel-stat--tr">Cd 0.20</p>
-        <p class="panel-text panel-text--bl">Every angle calculated to reduce coefficient of drag while increasing the authority of its presence.</p>
-        <p class="mono micro panel-tag panel-tag--tl">PANEL 02 / EXTERIOR</p>
-      </div>
-
-      <!-- Panel 3 Interior -->
-      <div class="panel panel--interior" data-panel="2">
-        <div class="panel-image">
-          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&q=90" alt="Cabin interior" loading="lazy" />
-        </div>
-        <div class="panel-overlay panel-overlay--dim"></div>
-        <p class="panel-text panel-text--br">Twelve hundred components. Every one accessible to human fingers, by design.</p>
-        <p class="mono micro panel-row">4-zone climate &nbsp;|&nbsp; 23-speaker audio &nbsp;|&nbsp; Haptic feedback surfaces</p>
-        <p class="mono micro panel-tag panel-tag--tl">PANEL 03 / INTERIOR</p>
-      </div>
-
-      <!-- Panel 4 Invitation -->
-      <div class="panel panel--invitation" data-panel="3">
-        <div class="panel-grad-anim"></div>
-        <div class="panel-invitation-content">
-          <p class="mono micro panel-eyebrow">Beginning at</p>
-          <p class="invitation-price">&#8377;2.40 Cr</p>
-          <a href="#reserve" class="btn btn--magnetic" data-magnetic>
-            <span class="magnetic-label">Request a Private Viewing</span>
-          </a>
-          <a href="#" class="ghost-link">Or explore full specifications <span class="arrow">&rarr;</span></a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Pagination dots -->
-  <div class="narrative-dots" id="narrativeDots" aria-hidden="true">
-    <span class="dot is-active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-</section>
-
-
-<!-- PERSONALIZATION -->
-<section class="modes" id="modes">
-  <div class="modes-grid">
-    <div class="modes-image">
-      <img class="mode-img is-active" data-mode-img="performance" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=90" alt="Performance mode" loading="lazy" />
-      <img class="mode-img" data-mode-img="luxury" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600&q=90" alt="Luxury mode" loading="lazy" />
-      <img class="mode-img" data-mode-img="comfort" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=90" alt="Comfort mode" loading="lazy" />
-      <img class="mode-img" data-mode-img="sustainability" src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=1600&q=90" alt="Sustainability mode" loading="lazy" />
-    </div>
-    <div class="modes-panel">
-      <p class="mono micro modes-eyebrow"><span class="reveal-target">Section 05 / Personalization</span></p>
-      <div class="modes-content">
-        <div class="mode-content is-active" data-mode-content="performance">
-          <p class="mono micro mode-key"><span class="mode-accent">Performance</span> mode</p>
-          <h2 class="mode-headline">The chassis speaks first.</h2>
-          <p class="mode-spec mono micro">Peak output &mdash; 750 bhp</p>
-        </div>
-        <div class="mode-content" data-mode-content="luxury">
-          <p class="mono micro mode-key"><span class="mode-accent">Luxury</span> mode</p>
-          <h2 class="mode-headline">Silence is a design material.</h2>
-          <p class="mode-spec mono micro">NVH: 28dB cabin at 130km/h</p>
-        </div>
-        <div class="mode-content" data-mode-content="comfort">
-          <p class="mono micro mode-key"><span class="mode-accent">Comfort</span> mode</p>
-          <h2 class="mode-headline">Every kilometre, lighter.</h2>
-          <p class="mode-spec mono micro">Adaptive air suspension &middot; 5 modes</p>
-        </div>
-        <div class="mode-content" data-mode-content="sustainability">
-          <p class="mono micro mode-key"><span class="mode-accent">Sustainability</span> mode</p>
-          <h2 class="mode-headline">Efficiency without apology.</h2>
-          <p class="mode-spec mono micro">687 km WLTP &middot; Zero direct emissions</p>
-        </div>
-      </div>
-      <div class="mode-selector" id="modeSelector">
-        <button class="mode-segment is-active" data-mode="performance" type="button">
-          <span class="mode-name">Performance</span>
-          <span class="mode-progress"><span class="mode-progress-fill"></span></span>
-        </button>
-        <button class="mode-segment" data-mode="luxury" type="button">
-          <span class="mode-name">Luxury</span>
-          <span class="mode-progress"><span class="mode-progress-fill"></span></span>
-        </button>
-        <button class="mode-segment" data-mode="comfort" type="button">
-          <span class="mode-name">Comfort</span>
-          <span class="mode-progress"><span class="mode-progress-fill"></span></span>
-        </button>
-        <button class="mode-segment" data-mode="sustainability" type="button">
-          <span class="mode-name">Sustainability</span>
-          <span class="mode-progress"><span class="mode-progress-fill"></span></span>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MOTION SHOWCASE -->
-<section class="motion" id="motion">
-  <div class="section-head">
-    <p class="mono micro"><span class="reveal-target">Section 06 / Motion System</span></p>
-    <h2 class="section-headline split-text">A vocabulary of movement.</h2>
-  </div>
-  <div class="motion-grid">
-
-    <article class="motion-card" data-motion="reveal">
-      <p class="mono micro motion-num">01</p>
-      <div class="motion-stage">
-        <div class="motion-reveal-box"></div>
-      </div>
-      <p class="motion-label">Cinematic Reveal</p>
-      <p class="mono micro motion-code">0.9s &middot; cubicBezier(0.76,0,0.24,1)</p>
-    </article>
-
-    <article class="motion-card" data-motion="hover">
-      <p class="mono micro motion-num">02</p>
-      <div class="motion-stage">
-        <div class="motion-hover-card">Hover</div>
-      </div>
-      <p class="motion-label">Tactile Hover</p>
-      <p class="mono micro motion-code">y: -8px &middot; scale: 1.01</p>
-    </article>
-
-    <article class="motion-card" data-motion="inertia">
-      <p class="mono micro motion-num">03</p>
-      <div class="motion-stage motion-stage--inertia">
-        <div class="motion-inertia-dot"></div>
-        <p class="mono micro motion-stage-hint">Move cursor</p>
-      </div>
-      <p class="motion-label">Inertia</p>
-      <p class="mono micro motion-code">stiffness: 150 &middot; damping: 18</p>
-    </article>
-
-    <article class="motion-card" data-motion="stagger">
-      <p class="mono micro motion-num">04</p>
-      <div class="motion-stage motion-stage--stagger">
-        <span class="stagger-line"></span>
-        <span class="stagger-line"></span>
-        <span class="stagger-line"></span>
-        <span class="stagger-line"></span>
-        <span class="stagger-line"></span>
-        <span class="stagger-line"></span>
-        <p class="mono micro motion-stage-hint">Click to replay</p>
-      </div>
-      <p class="motion-label">Stagger</p>
-      <p class="mono micro motion-code">stagger: 0.06s</p>
-    </article>
-
-    <article class="motion-card" data-motion="depth">
-      <p class="mono micro motion-num">05</p>
-      <div class="motion-stage motion-stage--depth">
-        <span class="depth-layer depth-layer--1"></span>
-        <span class="depth-layer depth-layer--2"></span>
-        <span class="depth-layer depth-layer--3"></span>
-      </div>
-      <p class="motion-label">Layered Depth</p>
-      <p class="mono micro motion-code">speeds: [0.2, 0.5, 0.8]</p>
-    </article>
-
-  </div>
-</section>
-
-
-<!-- INVENTORY GALLERY -->
-<section class="inventory" id="fleet">
-  <div class="section-head section-head--row">
-    <div>
-      <p class="mono micro"><span class="reveal-target">Section 07 / The Fleet</span></p>
-      <h2 class="section-headline split-text">Four expressions of the same intent.</h2>
-    </div>
-    <p class="mono micro inventory-hint">Scroll &middot; drag &middot; explore</p>
-  </div>
-  <div class="inventory-progress" aria-hidden="true">
-    <span class="inventory-progress-fill" id="inventoryProgressFill"></span>
-  </div>
-  <div class="inventory-track-wrap" id="inventoryWrap">
-    <div class="inventory-track" id="inventoryTrack">
-
-      <article class="inv-card">
-        <div class="inv-image">
-          <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=90" alt="Aether S1" loading="lazy" />
-        </div>
-        <div class="inv-meta">
-          <div class="inv-row inv-row--top">
-            <p class="mono micro">01 / Grand Tourer</p>
-            <p class="mono micro">2026</p>
-          </div>
-          <h3 class="inv-name">Aether S1</h3>
-          <p class="inv-tagline italic">"The first car you stop watching and start feeling."</p>
-          <div class="inv-specs">
-            <div><span class="mono micro">0&ndash;100</span><span>2.8 s</span></div>
-            <div><span class="mono micro">Range</span><span>687 km</span></div>
-            <div><span class="mono micro">Price</span><span>&#8377;2.40 Cr</span></div>
-          </div>
-          <div class="inv-row inv-row--foot">
-            <p class="mono micro inv-status inv-status--green">&middot; Immediate Delivery</p>
-            <a href="#reserve" class="btn btn--magnetic btn--ghostline" data-magnetic>
-              <span class="magnetic-label">View Configuration</span>
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="inv-card">
-        <div class="inv-image">
-          <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=1200&q=90" alt="Aether R3" loading="lazy" />
-        </div>
-        <div class="inv-meta">
-          <div class="inv-row inv-row--top">
-            <p class="mono micro">02 / Performance Saloon</p>
-            <p class="mono micro">2026</p>
-          </div>
-          <h3 class="inv-name">Aether R3</h3>
-          <p class="inv-tagline italic">"Performance as a form of restraint."</p>
-          <div class="inv-specs">
-            <div><span class="mono micro">0&ndash;100</span><span>2.4 s</span></div>
-            <div><span class="mono micro">Peak</span><span>820 bhp</span></div>
-            <div><span class="mono micro">Price</span><span>&#8377;3.15 Cr</span></div>
-          </div>
-          <div class="inv-row inv-row--foot">
-            <p class="mono micro inv-status inv-status--amber">&middot; 6 Allocations Remaining</p>
-            <a href="#reserve" class="btn btn--magnetic btn--ghostline" data-magnetic>
-              <span class="magnetic-label">View Configuration</span>
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="inv-card">
-        <div class="inv-image">
-          <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200&q=90" alt="Aether E7" loading="lazy" />
-        </div>
-        <div class="inv-meta">
-          <div class="inv-row inv-row--top">
-            <p class="mono micro">03 / Executive SUV</p>
-            <p class="mono micro">2026</p>
-          </div>
-          <h3 class="inv-name">Aether E7</h3>
-          <p class="inv-tagline italic">"Space that doesn't announce itself."</p>
-          <div class="inv-specs">
-            <div><span class="mono micro">Seating</span><span>5+2</span></div>
-            <div><span class="mono micro">Cargo</span><span>780 L</span></div>
-            <div><span class="mono micro">Price</span><span>&#8377;4.80 Cr</span></div>
-          </div>
-          <div class="inv-row inv-row--foot">
-            <p class="mono micro inv-status">&middot; Configure to Order</p>
-            <a href="#reserve" class="btn btn--magnetic btn--ghostline" data-magnetic>
-              <span class="magnetic-label">View Configuration</span>
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="inv-card">
-        <div class="inv-image">
-          <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=1200&q=90" alt="Aether A0" loading="lazy" />
-        </div>
-        <div class="inv-meta">
-          <div class="inv-row inv-row--top">
-            <p class="mono micro">04 / Urban Coupe</p>
-            <p class="mono micro">2026</p>
-          </div>
-          <h3 class="inv-name">Aether A0</h3>
-          <p class="inv-tagline italic">"The city, reconsidered."</p>
-          <div class="inv-specs">
-            <div><span class="mono micro">Weight</span><span>1,240 kg</span></div>
-            <div><span class="mono micro">Length</span><span>4,120 mm</span></div>
-            <div><span class="mono micro">Price</span><span>&#8377;1.65 Cr</span></div>
-          </div>
-          <div class="inv-row inv-row--foot">
-            <p class="mono micro inv-status">&middot; Waitlist Open</p>
-            <a href="#reserve" class="btn btn--magnetic btn--ghostline" data-magnetic>
-              <span class="magnetic-label">View Configuration</span>
-            </a>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- FINALE -->
-<section class="finale" id="reserve">
-  <div class="finale-bg">
-    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=2400&q=85" alt="" aria-hidden="true" />
-  </div>
-  <div class="finale-conic" aria-hidden="true"></div>
-  <div class="finale-content">
-    <p class="mono micro finale-eyebrow"><span class="reveal-target">AETHER DRIVE &middot; PRIVATE CLIENT</span></p>
-    <h2 class="finale-headline">
-      <span class="hl-line italic">Some vehicles</span>
-      <span class="hl-line">are found.</span>
-      <span class="hl-line italic platinum">This one</span>
-      <span class="hl-line">finds you.</span>
-    </h2>
-    <p class="finale-body"><span class="reveal-target">Our private client programme is by introduction. If you are reading this, someone believed you should.</span></p>
-    <a href="#" class="btn btn--magnetic btn--large" data-magnetic>
-      <span class="magnetic-label">Request an Introduction</span>
-    </a>
-    <p class="mono micro finale-note"><span class="reveal-target">All enquiries are handled personally.</span></p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <span class="footer-line" aria-hidden="true"></span>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <p class="footer-logo">AETHER <span class="thin">DRIVE</span></p>
-      <p class="mono micro footer-tag">Engineered at the edge of perception.</p>
-    </div>
-    <div class="footer-cols">
-      <div class="footer-col">
-        <p class="mono micro footer-col-head">Explore</p>
-        <ul>
-          <li><a href="#fleet">The Fleet</a></li>
-          <li><a href="#story">Story</a></li>
-          <li><a href="#narrative">AETHER S1</a></li>
-          <li><a href="#modes">Configurations</a></li>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu__links">
+            <li><a href="#featured">Vehicles</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#listings">Inventory</a></li>
+            <li><a href="#trade-in">Trade-In</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="tel:+18005550199">Call Us</a></li>
         </ul>
-      </div>
-      <div class="footer-col">
-        <p class="mono micro footer-col-head">Atelier</p>
-        <ul>
-          <li><a href="#atelier">Bespoke</a></li>
-          <li><a href="#">Materials</a></li>
-          <li><a href="#">Provenance</a></li>
-          <li><a href="#">Workshop</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <p class="mono micro footer-col-head">Connect</p>
-        <ul>
-          <li><a href="#reserve">Private Office</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Owners</a></li>
-        </ul>
-      </div>
     </div>
-  </div>
-  <div class="footer-base">
-    <p class="mono micro">&copy; MMXXVI Aether Drive Atelier. All references fictional.</p>
-    <ul class="footer-legal">
-      <li><a href="#">Privacy</a></li>
-      <li><a href="#">Terms</a></li>
-      <li><a href="#">Cookies</a></li>
-    </ul>
-  </div>
-</footer>
 
-<!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="main.js"></script>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero__bg">
+            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=2400&q=85" alt="Luxury sports car on open road" class="hero__img" loading="eager">
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <div class="hero__subtitle reveal-mask"><span>Established 2024 — Beverly Hills</span></div>
+            <h1 class="hero__title">
+                <span class="reveal-mask"><span>The Art of</span></span>
+                <span class="reveal-mask"><span>Automotive</span></span>
+                <span class="reveal-mask"><span class="gold">Excellence</span></span>
+            </h1>
+            <div class="hero__gold-line"></div>
+            <p class="hero__desc reveal-mask"><span>Curating the world's finest automobiles for discerning collectors and enthusiasts.</span></p>
+            <a href="#featured" class="hero__cta reveal-mask"><span>Explore Collection</span></a>
+        </div>
+        <div class="hero__stats">
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-target="450">0</span>
+                <span class="hero__stat-label">Vehicles Sold</span>
+            </div>
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-target="12">0</span>
+                <span class="hero__stat-label">Years Experience</span>
+            </div>
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-target="98">0</span>
+                <span class="hero__stat-label">Client Satisfaction %</span>
+            </div>
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-target="35">0</span>
+                <span class="hero__stat-label">Premium Brands</span>
+            </div>
+        </div>
+        <div class="hero__scroll-indicator">
+            <span>Scroll</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
+
+
+    <!-- Road Companion -->
+    <div class="road-companion" id="roadCompanion">
+        <svg class="road-companion__car" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 45 Q25 25 60 25 L100 20 Q140 18 160 25 L180 35 Q185 40 180 45 Z" fill="#C9A84C" opacity="0.3"/>
+            <ellipse cx="55" cy="48" rx="12" ry="12" fill="#252830"/>
+            <ellipse cx="55" cy="48" rx="6" ry="6" fill="#4A4844"/>
+            <ellipse cx="150" cy="48" rx="12" ry="12" fill="#252830"/>
+            <ellipse cx="150" cy="48" rx="6" ry="6" fill="#4A4844"/>
+        </svg>
+    </div>
+
+    <!-- Brand Marquee -->
+    <section class="marquee">
+        <div class="marquee__track">
+            <div class="marquee__content">
+                <span class="marquee__item">BMW</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Mercedes-Benz</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Porsche</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Audi</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Lamborghini</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Ferrari</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Bentley</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Rolls-Royce</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Maserati</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Aston Martin</span>
+                <span class="marquee__separator">&#x2022;</span>
+            </div>
+            <div class="marquee__content" aria-hidden="true">
+                <span class="marquee__item">BMW</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Mercedes-Benz</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Porsche</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Audi</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Lamborghini</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Ferrari</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Bentley</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Rolls-Royce</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Maserati</span>
+                <span class="marquee__separator">&#x2022;</span>
+                <span class="marquee__item">Aston Martin</span>
+                <span class="marquee__separator">&#x2022;</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Featured Vehicles -->
+    <section class="featured" id="featured">
+        <div class="featured__header">
+            <div class="featured__label reveal-mask"><span>Featured Collection</span></div>
+            <h2 class="featured__title reveal-mask"><span>Handpicked for the Exceptional</span></h2>
+        </div>
+        <div class="featured__controls">
+            <div class="featured__progress">
+                <div class="featured__progress-bar" id="featuredProgress"></div>
+            </div>
+            <div class="featured__nav">
+                <button class="featured__nav-btn" id="featuredPrev" aria-label="Previous">&#8592;</button>
+                <button class="featured__nav-btn" id="featuredNext" aria-label="Next">&#8594;</button>
+            </div>
+        </div>
+        <div class="featured__track" id="featuredTrack">
+            <article class="featured__card">
+                <div class="featured__card-img">
+                    <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=800&q=85" alt="BMW M4 Competition in metallic blue" loading="lazy">
+                    <span class="featured__card-badge">New Arrival</span>
+                </div>
+                <div class="featured__card-body">
+                    <h3 class="featured__card-name">BMW M4 Competition</h3>
+                    <span class="featured__card-year">2024</span>
+                    <div class="featured__card-specs">
+                        <span>503 HP</span>
+                        <span>3.4s 0-60</span>
+                        <span>AWD</span>
+                    </div>
+                    <div class="featured__card-footer">
+                        <span class="featured__card-price">$84,900</span>
+                        <a href="#" class="featured__card-link">Details &#8594;</a>
+                    </div>
+                </div>
+            </article>
+            <article class="featured__card">
+                <div class="featured__card-img">
+                    <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=800&q=85" alt="Porsche 911 GT3 in white" loading="lazy">
+                    <span class="featured__card-badge">Limited</span>
+                </div>
+                <div class="featured__card-body">
+                    <h3 class="featured__card-name">Porsche 911 GT3</h3>
+                    <span class="featured__card-year">2024</span>
+                    <div class="featured__card-specs">
+                        <span>502 HP</span>
+                        <span>3.2s 0-60</span>
+                        <span>RWD</span>
+                    </div>
+                    <div class="featured__card-footer">
+                        <span class="featured__card-price">$169,700</span>
+                        <a href="#" class="featured__card-link">Details &#8594;</a>
+                    </div>
+                </div>
+            </article>
+            <article class="featured__card">
+                <div class="featured__card-img">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&q=85" alt="Mercedes AMG GT in silver" loading="lazy">
+                    <span class="featured__card-badge">Certified</span>
+                </div>
+                <div class="featured__card-body">
+                    <h3 class="featured__card-name">Mercedes-AMG GT</h3>
+                    <span class="featured__card-year">2023</span>
+                    <div class="featured__card-specs">
+                        <span>577 HP</span>
+                        <span>3.1s 0-60</span>
+                        <span>RWD</span>
+                    </div>
+                    <div class="featured__card-footer">
+                        <span class="featured__card-price">$142,500</span>
+                        <a href="#" class="featured__card-link">Details &#8594;</a>
+                    </div>
+                </div>
+            </article>
+            <article class="featured__card">
+                <div class="featured__card-img">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=85" alt="Audi RS e-tron GT in grey" loading="lazy">
+                    <span class="featured__card-badge">Electric</span>
+                </div>
+                <div class="featured__card-body">
+                    <h3 class="featured__card-name">Audi RS e-tron GT</h3>
+                    <span class="featured__card-year">2024</span>
+                    <div class="featured__card-specs">
+                        <span>637 HP</span>
+                        <span>3.1s 0-60</span>
+                        <span>AWD</span>
+                    </div>
+                    <div class="featured__card-footer">
+                        <span class="featured__card-price">$147,800</span>
+                        <a href="#" class="featured__card-link">Details &#8594;</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about__inner">
+            <div class="about__text">
+                <div class="about__label reveal-mask"><span>Our Philosophy</span></div>
+                <blockquote class="about__quote">
+                    <div class="about__quote-rule"></div>
+                    <p class="reveal-mask"><span>"We don't simply sell automobiles. We curate experiences, forge relationships, and deliver dreams wrapped in precision engineering."</span></p>
+                </blockquote>
+                <p class="about__desc reveal-mask"><span>Founded on the principle that acquiring a vehicle should be as exhilarating as driving one, APEX MOTORS has redefined the luxury automotive experience. Our team of specialists brings decades of combined expertise in sourcing, certifying, and presenting the world's most coveted machines.</span></p>
+                <div class="about__stat-card">
+                    <span class="about__stat-num" data-target="2847">0</span>
+                    <span class="about__stat-label">Happy Clients Since 2012</span>
+                </div>
+            </div>
+            <div class="about__images">
+                <div class="about__img-main reveal-clip">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=85" alt="Red luxury sports car in showroom" loading="lazy">
+                </div>
+                <div class="about__img-secondary reveal-clip">
+                    <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=600&q=85" alt="Classic car detail shot showing chrome grille" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Listings Grid -->
+    <section class="listings" id="listings">
+        <div class="listings__header">
+            <div class="listings__label reveal-mask"><span>Our Inventory</span></div>
+            <h2 class="listings__title reveal-mask"><span>Browse the Collection</span></h2>
+        </div>
+        <div class="listings__filters">
+            <div class="listings__filter-indicator" id="filterIndicator"></div>
+            <button class="listings__filter active" data-filter="all">All</button>
+            <button class="listings__filter" data-filter="sports">Sports</button>
+            <button class="listings__filter" data-filter="suv">SUV</button>
+            <button class="listings__filter" data-filter="sedan">Sedan</button>
+            <button class="listings__filter" data-filter="electric">Electric</button>
+            <button class="listings__filter" data-filter="luxury">Luxury</button>
+        </div>
+        <div class="listings__grid" id="listingsGrid">
+            <article class="listings__card" data-category="sports">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1617531653332-bd46c16f7d61?w=800&q=85" alt="BMW M4 Competition" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>BMW M4 Competition</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>503 HP</span><span>2,100 mi</span>
+                    </div>
+                    <span class="listings__card-price">$84,900</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="sports">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?w=800&q=85" alt="Porsche 911 GT3" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Porsche 911 GT3</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>502 HP</span><span>850 mi</span>
+                    </div>
+                    <span class="listings__card-price">$169,700</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="luxury">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&q=85" alt="Mercedes-AMG GT" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Mercedes-AMG GT</h3>
+                    <div class="listings__card-meta">
+                        <span>2023</span><span>577 HP</span><span>5,400 mi</span>
+                    </div>
+                    <span class="listings__card-price">$142,500</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="electric">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=85" alt="Audi RS e-tron GT" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Audi RS e-tron GT</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>637 HP</span><span>1,200 mi</span>
+                    </div>
+                    <span class="listings__card-price">$147,800</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="suv">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1562911791-c7a97b729ec5?w=800&q=85" alt="Range Rover Autobiography" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Range Rover Autobiography</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>523 HP</span><span>3,800 mi</span>
+                    </div>
+                    <span class="listings__card-price">$198,500</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="suv">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&q=85" alt="Porsche Cayenne Turbo GT" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Porsche Cayenne Turbo GT</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>631 HP</span><span>4,200 mi</span>
+                    </div>
+                    <span class="listings__card-price">$185,000</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="sedan">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1618843479619-f3d0d81e4d10?w=800&q=85" alt="Mercedes S-Class" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Mercedes-Benz S 580</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>496 HP</span><span>6,100 mi</span>
+                    </div>
+                    <span class="listings__card-price">$119,900</span>
+                </div>
+            </article>
+            <article class="listings__card" data-category="sports">
+                <div class="listings__card-img">
+                    <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=85" alt="Audi RS7 Sportback" loading="lazy">
+                </div>
+                <div class="listings__card-body">
+                    <h3>Audi RS7 Sportback</h3>
+                    <div class="listings__card-meta">
+                        <span>2024</span><span>621 HP</span><span>2,900 mi</span>
+                    </div>
+                    <span class="listings__card-price">$128,400</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+    <!-- Promise Section -->
+    <section class="promise" id="promise">
+        <div class="promise__header">
+            <div class="promise__label reveal-mask"><span>The APEX Promise</span></div>
+            <h2 class="promise__title reveal-mask"><span>Uncompromising Standards</span></h2>
+        </div>
+        <div class="promise__grid">
+            <div class="promise__card">
+                <div class="promise__card-rule"></div>
+                <span class="promise__card-num">01</span>
+                <h3 class="promise__card-title">200-Point Inspection</h3>
+                <p class="promise__card-desc">Every vehicle undergoes our rigorous 200-point certification process, ensuring mechanical perfection and cosmetic excellence before reaching our showroom floor.</p>
+            </div>
+            <div class="promise__card">
+                <div class="promise__card-rule"></div>
+                <span class="promise__card-num">02</span>
+                <h3 class="promise__card-title">Concierge Delivery</h3>
+                <p class="promise__card-desc">Your vehicle arrives at your doorstep, detailed to perfection, with a personal specialist to walk you through every feature and answer any questions.</p>
+            </div>
+            <div class="promise__card">
+                <div class="promise__card-rule"></div>
+                <span class="promise__card-num">03</span>
+                <h3 class="promise__card-title">Lifetime Relationship</h3>
+                <p class="promise__card-desc">Our commitment extends beyond the sale. Enjoy priority service, exclusive events, and a dedicated advisor for as long as you own your APEX vehicle.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Trade-In Section -->
+    <section class="trade-in" id="trade-in">
+        <div class="trade-in__inner">
+            <div class="trade-in__image">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85" alt="Luxury car driving on coastal road" loading="lazy">
+            </div>
+            <div class="trade-in__content">
+                <div class="trade-in__label reveal-mask"><span>Trade-In Program</span></div>
+                <h2 class="trade-in__title reveal-mask"><span>Upgrade Your Drive</span></h2>
+                <p class="trade-in__desc reveal-mask"><span>Get a premium valuation for your current vehicle and seamlessly transition into your next automotive masterpiece.</span></p>
+                <div class="trade-in__wizard" id="tradeWizard">
+                    <div class="trade-in__steps">
+                        <div class="trade-in__step active" data-step="1">
+                            <span class="trade-in__step-num">1</span>
+                            <span class="trade-in__step-text">Vehicle Info</span>
+                        </div>
+                        <div class="trade-in__step" data-step="2">
+                            <span class="trade-in__step-num">2</span>
+                            <span class="trade-in__step-text">Condition</span>
+                        </div>
+                        <div class="trade-in__step" data-step="3">
+                            <span class="trade-in__step-num">3</span>
+                            <span class="trade-in__step-text">Contact</span>
+                        </div>
+                    </div>
+                    <div class="trade-in__forms">
+                        <form class="trade-in__form active" data-form="1">
+                            <div class="trade-in__field">
+                                <label for="tradeYear">Year</label>
+                                <select id="tradeYear">
+                                    <option value="">Select Year</option>
+                                    <option>2024</option>
+                                    <option>2023</option>
+                                    <option>2022</option>
+                                    <option>2021</option>
+                                    <option>2020</option>
+                                    <option>2019</option>
+                                    <option>2018</option>
+                                </select>
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradeMake">Make</label>
+                                <input type="text" id="tradeMake" placeholder="e.g. BMW, Mercedes">
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradeModel">Model</label>
+                                <input type="text" id="tradeModel" placeholder="e.g. M4, S-Class">
+                            </div>
+                            <button type="button" class="trade-in__next" data-next="2">Next Step &#8594;</button>
+                        </form>
+                        <form class="trade-in__form" data-form="2">
+                            <div class="trade-in__field">
+                                <label for="tradeMileage">Mileage</label>
+                                <input type="text" id="tradeMileage" placeholder="e.g. 25,000">
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradeCondition">Condition</label>
+                                <select id="tradeCondition">
+                                    <option value="">Select Condition</option>
+                                    <option>Excellent</option>
+                                    <option>Good</option>
+                                    <option>Fair</option>
+                                    <option>Needs Work</option>
+                                </select>
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradeNotes">Additional Notes</label>
+                                <textarea id="tradeNotes" placeholder="Any modifications, damage, etc." rows="3"></textarea>
+                            </div>
+                            <div class="trade-in__form-nav">
+                                <button type="button" class="trade-in__prev" data-prev="1">&#8592; Back</button>
+                                <button type="button" class="trade-in__next" data-next="3">Next Step &#8594;</button>
+                            </div>
+                        </form>
+                        <form class="trade-in__form" data-form="3">
+                            <div class="trade-in__field">
+                                <label for="tradeName">Full Name</label>
+                                <input type="text" id="tradeName" placeholder="John Smith">
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradeEmail">Email</label>
+                                <input type="email" id="tradeEmail" placeholder="john@example.com">
+                            </div>
+                            <div class="trade-in__field">
+                                <label for="tradePhone">Phone</label>
+                                <input type="tel" id="tradePhone" placeholder="+1 (555) 000-0000">
+                            </div>
+                            <div class="trade-in__form-nav">
+                                <button type="button" class="trade-in__prev" data-prev="2">&#8592; Back</button>
+                                <button type="submit" class="trade-in__submit">Get Valuation</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials__inner">
+            <div class="testimonials__label reveal-mask"><span>Client Stories</span></div>
+            <h2 class="testimonials__title reveal-mask"><span>Words from Our Community</span></h2>
+            <div class="testimonials__carousel" id="testimonialCarousel">
+                <div class="testimonials__slide active">
+                    <p class="testimonials__text">"The entire experience was unlike anything I've encountered. From the first call to delivery day, APEX made me feel like their only client. The M4 Competition exceeded every expectation."</p>
+                    <div class="testimonials__author">
+                        <span class="testimonials__name">Marcus Chen</span>
+                        <span class="testimonials__role">BMW M4 Owner</span>
+                    </div>
+                </div>
+                <div class="testimonials__slide">
+                    <p class="testimonials__text">"I've purchased numerous luxury vehicles over the years, but APEX's attention to detail is unmatched. They found me a 911 GT3 allocation when every other dealer had a two-year waitlist."</p>
+                    <div class="testimonials__author">
+                        <span class="testimonials__name">Victoria Reynolds</span>
+                        <span class="testimonials__role">Porsche 911 GT3 Owner</span>
+                    </div>
+                </div>
+                <div class="testimonials__slide">
+                    <p class="testimonials__text">"What sets APEX apart is their post-purchase care. Three years later, they still reach out, arrange service appointments, and invite us to exclusive track days. They're family now."</p>
+                    <div class="testimonials__author">
+                        <span class="testimonials__name">James & Sarah Mitchell</span>
+                        <span class="testimonials__role">Mercedes-AMG GT Owners</span>
+                    </div>
+                </div>
+                <div class="testimonials__slide">
+                    <p class="testimonials__text">"The trade-in process was seamless. They offered 15% above market value for my old RS5 and had me in a brand new RS e-tron GT within a week. Absolutely phenomenal service."</p>
+                    <div class="testimonials__author">
+                        <span class="testimonials__name">David Park</span>
+                        <span class="testimonials__role">Audi RS e-tron GT Owner</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonials__dots" id="testimonialDots">
+                <button class="testimonials__dot active" data-slide="0" aria-label="Slide 1"></button>
+                <button class="testimonials__dot" data-slide="1" aria-label="Slide 2"></button>
+                <button class="testimonials__dot" data-slide="2" aria-label="Slide 3"></button>
+                <button class="testimonials__dot" data-slide="3" aria-label="Slide 4"></button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="faq__watermark">FAQ</div>
+        <div class="faq__inner">
+            <div class="faq__header">
+                <div class="faq__label reveal-mask"><span>Common Questions</span></div>
+                <h2 class="faq__title reveal-mask"><span>Everything You Need to Know</span></h2>
+            </div>
+            <div class="faq__grid">
+                <div class="faq__col">
+                    <details class="faq__item">
+                        <summary class="faq__question">What financing options are available?</summary>
+                        <div class="faq__answer">We partner with premium lenders to offer competitive rates starting at 3.9% APR. Our finance team can structure leases, traditional loans, or balloon payments tailored to your needs. We also accept cryptocurrency and wire transfers for immediate purchases.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">Do you offer nationwide delivery?</summary>
+                        <div class="faq__answer">Absolutely. We provide enclosed transport delivery anywhere in the continental United States, included complimentary for vehicles over $100,000. International shipping is available to select countries with full customs handling.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">What is your return policy?</summary>
+                        <div class="faq__answer">We offer a 7-day/500-mile return guarantee on all certified vehicles. If you're not completely satisfied, return the vehicle in the same condition for a full refund minus a $500 restocking fee. No questions asked.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">Can I schedule a test drive?</summary>
+                        <div class="faq__answer">Test drives can be scheduled online or by calling our concierge team. We offer both on-site experiences at our Beverly Hills showroom and complimentary at-home test drives within a 50-mile radius for qualified buyers.</div>
+                    </details>
+                </div>
+                <div class="faq__col">
+                    <details class="faq__item">
+                        <summary class="faq__question">How does the trade-in process work?</summary>
+                        <div class="faq__answer">Simply fill out our online trade-in form or bring your vehicle to our showroom. Our certified appraisers will provide a market-competitive offer within 30 minutes. We consistently offer above KBB values for well-maintained vehicles.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">Are your vehicles certified pre-owned?</summary>
+                        <div class="faq__answer">Every vehicle in our inventory undergoes a comprehensive 200-point inspection by factory-trained technicians. We provide a complete CARFAX history report, remaining manufacturer warranty details, and our own 12-month/12,000-mile supplemental warranty.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">Do you source specific vehicles on request?</summary>
+                        <div class="faq__answer">Yes, our acquisition team specializes in locating rare and specific vehicles worldwide. Whether you're seeking a particular color combination, limited edition, or classic model, we leverage our global dealer network to find exactly what you want.</div>
+                    </details>
+                    <details class="faq__item">
+                        <summary class="faq__question">What about after-sale support?</summary>
+                        <div class="faq__answer">Every APEX client receives a dedicated relationship manager, priority scheduling at our service center, complimentary annual detailing, and invitations to exclusive automotive events. Our support never expires — once an APEX client, always an APEX client.</div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer__ghost-car">
+            <svg viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40 90 Q50 50 120 50 L200 40 Q280 36 320 50 L360 70 Q370 80 360 90 Z" fill="#0F1012" opacity="0.5"/>
+                <ellipse cx="110" cy="96" rx="20" ry="20" fill="#0F1012"/>
+                <ellipse cx="300" cy="96" rx="20" ry="20" fill="#0F1012"/>
+            </svg>
+        </div>
+        <div class="footer__inner">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <a href="#" class="footer__logo">APEX<span class="gold">.</span></a>
+                    <p class="footer__tagline">The Art of Automotive Excellence</p>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__nav-col">
+                        <h4>Showroom</h4>
+                        <ul>
+                            <li><a href="#featured">Featured</a></li>
+                            <li><a href="#listings">All Vehicles</a></li>
+                            <li><a href="#">New Arrivals</a></li>
+                            <li><a href="#">Coming Soon</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__nav-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#trade-in">Trade-In</a></li>
+                            <li><a href="#">Financing</a></li>
+                            <li><a href="#">Vehicle Sourcing</a></li>
+                            <li><a href="#">Maintenance</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__nav-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__nav-col">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">YouTube</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                            <li><a href="#">Twitter / X</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__rule"></div>
+            <div class="footer__bottom">
+                <span>&copy; 2024 APEX MOTORS. All rights reserved.</span>
+                <div class="footer__legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
